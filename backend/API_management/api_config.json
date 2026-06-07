@@ -1,0 +1,281 @@
+{
+  "llm": {
+    "openai": {
+      "apiKey": "",
+      "baseUrl": "https://api.openai.com/v1",
+      "models": [
+        "gpt-4o",
+        "gpt-4o-mini",
+        "gpt-4-turbo",
+        "gpt-3.5-turbo"
+      ],
+      "enabled": false
+    },
+    "anthropic": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "google": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "deepseek": {
+      "apiKey": "",
+      "baseUrl": "https://api.deepseek.com/v1",
+      "models": [
+        "deepseek-chat",
+        "deepseek-reasoner"
+      ],
+      "enabled": false
+    },
+    "qwen": {
+      "apiKey": "sk-e970b82e9c064d7f822ddc9e5618b13e",
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "models": [
+        "qwen-plus",
+        "qwen-turbo"
+      ],
+      "enabled": true
+    },
+    "kimi": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "minimax": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "glm": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "siliconflow": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "doubao": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": false
+    },
+    "openrouter": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "grok": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "tencent-hunyuan": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "xiaomi": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "ollama": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    }
+  },
+  "tts": {
+    "openai-tts": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "azure-tts": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "glm-tts": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "qwen-tts": {
+      "apiKey": "sk-e970b82e9c064d7f822ddc9e5618b13e",
+      "baseUrl": "https://dashscope.aliyuncs.com/api/v1",
+      "models": [
+        "qwen3-tts-flash",
+        "qwen-tts"
+      ],
+      "enabled": true
+    },
+    "voxcpm-tts": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "doubao-tts": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "elevenlabs-tts": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "minimax-tts": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    }
+  },
+  "asr": {
+    "openai-whisper": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "qwen-asr": {
+      "apiKey": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "models": [],
+      "enabled": true
+    }
+  },
+  "pdf": {
+    "unpdf": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "mineru": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "mineru-cloud": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    }
+  },
+  "image": {
+    "openai-image": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "seedream": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "qwen-image": {
+      "apiKey": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "models": [],
+      "enabled": true
+    },
+    "nano-banana": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "minimax-image": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "grok-image": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    }
+  },
+  "video": {
+    "seedance": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "kling": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "veo": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "sora": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "minimax-video": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    },
+    "grok-video": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    }
+  },
+  "webSearch": {
+    "tavily": {
+      "apiKey": "",
+      "baseUrl": "",
+      "models": [],
+      "enabled": true
+    }
+  },
+  "globalSettings": {
+    "defaultModel": "qwen-plus",
+    "accessCode": "",
+    "allowLocalNetworks": false
+  }
+}

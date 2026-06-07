@@ -1,0 +1,680 @@
+[2026-06-03 17:54:40] 检查依赖...
+[2026-06-03 17:54:40] 启动后端服务...
+[2026-06-03 17:54:40] 后端服务已启动 (PID: 4146094)
+[日志清理] 已删除 6 个旧日志文件，保留最近两次运行的日志
+[2026-06-03 17:54:40] [INFO] ============================================================
+[2026-06-03 17:54:40] [INFO] Teacher Assistant AI 服务启动管理器
+[2026-06-03 17:54:40] [INFO] ============================================================
+[2026-06-03 17:54:40] [INFO] 启动模式: 并行
+[2026-06-03 17:54:40] [INFO] 日志级别: INFO
+[2026-06-03 17:54:40] [INFO] ------------------------------------------------------------
+[2026-06-03 17:54:40] [INFO] [登录服务] 启动命令: 命令: /usr/bin/python3 /home/ubuntu/OmniAI Edu/backend/Login/login.py
+[2026-06-03 17:54:40] [INFO] [API统一管理服务] 启动命令: 命令: /usr/bin/python3 /home/ubuntu/OmniAI Edu/backend/API_management/app.py --host 0.0.0.0 --port 5010
+[2026-06-03 17:54:40] [INFO] [手写数字识别服务(GPU)] 启动命令: 命令: /usr/bin/python3 /home/ubuntu/OmniAI Edu/backend/DigitRecognition/app.py
+[2026-06-03 17:54:40] [INFO] [OpenMAIC智能课堂服务] 启动命令: 命令: pnpm dev --port 5006, 工作目录: /home/ubuntu/OmniAI Edu/backend/OpenMAIC
+[2026-06-03 17:54:40] [INFO] [练习反馈服务] 启动命令: 命令: /usr/bin/python3 /home/ubuntu/OmniAI Edu/backend/PracticeService/app.py
+[2026-06-03 17:54:42] [ERROR] [登录服务] 启动失败: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/Login/login.py", line 1, in <module>
+    from flask import Flask, request, jsonify
+ModuleNotFoundError: No module named 'flask'
+
+[2026-06-03 17:54:42] [ERROR] [手写数字识别服务(GPU)] 启动失败: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/DigitRecognition/app.py", line 6, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+
+[2026-06-03 17:54:42] [ERROR] [API统一管理服务] 启动失败: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/API_management/app.py", line 13, in <module>
+    from flask import Flask, request, jsonify
+ModuleNotFoundError: No module named 'flask'
+
+[2026-06-03 17:54:42] [INFO] [OpenMAIC智能课堂服务] 启动成功 - PID: 4146107, Port: 5006, 耗时: 2.00s
+[2026-06-03 17:54:42] [INFO] [OpenMAIC智能课堂服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/openmaic_20260603_175440.log
+[2026-06-03 17:54:42] [ERROR] [练习反馈服务] 启动失败: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/PracticeService/app.py", line 1, in <module>
+    from flask import Flask, request, jsonify, Response
+ModuleNotFoundError: No module named 'flask'
+
+[2026-06-03 17:54:42] [INFO] ------------------------------------------------------------
+[2026-06-03 17:54:42] [INFO] 启动完成 - 总计: 5 个服务
+[2026-06-03 17:54:42] [INFO]   成功: 1 个
+[2026-06-03 17:54:42] [INFO]   失败: 4 个
+[2026-06-03 17:54:42] [INFO]   总耗时: 2.01 秒
+[2026-06-03 17:54:42] [INFO] ------------------------------------------------------------
+[2026-06-03 17:54:42] [INFO] 服务状态详情:
+[2026-06-03 17:54:42] [INFO] 服务名称                 端口       PID        状态        
+[2026-06-03 17:54:42] [INFO] ------------------------------------------------------------
+[2026-06-03 17:54:42] [INFO] 登录服务               5000     4146103    ✗ failed
+[2026-06-03 17:54:42] [INFO]   错误: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/Login/login.py", line 1, in <module>
+    from flask import Flask, request, jsonify
+ModuleNotFoundError: No module named 'flask'
+
+[2026-06-03 17:54:42] [INFO] OpenMAIC智能课堂服务     5006     4146107    ✓ running
+[2026-06-03 17:54:42] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/openmaic_20260603_175440.log
+[2026-06-03 17:54:42] [INFO] API统一管理服务          5010     4146105    ✗ failed
+[2026-06-03 17:54:42] [INFO]   错误: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/API_management/app.py", line 13, in <module>
+    from flask import Flask, request, jsonify
+ModuleNotFoundError: No module named 'flask'
+
+[2026-06-03 17:54:42] [INFO] 手写数字识别服务(GPU)      5005     4146106    ✗ failed
+[2026-06-03 17:54:42] [INFO]   错误: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/DigitRecognition/app.py", line 6, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+
+[2026-06-03 17:54:42] [INFO] 练习反馈服务             5011     4146108    ✗ failed
+[2026-06-03 17:54:42] [INFO]   错误: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/PracticeService/app.py", line 1, in <module>
+    from flask import Flask, request, jsonify, Response
+ModuleNotFoundError: No module named 'flask'
+
+[2026-06-03 17:54:42] [INFO] 启动报告已保存: /home/ubuntu/OmniAI Edu/backend/logs/latest_startup_report.txt
+[2026-06-03 17:54:42] [WARNING] 部分服务启动失败，请检查日志
+[2026-06-03 17:54:42] [INFO] 
+正在监控服务状态 (按 Ctrl+C 停止)...
+
+[2026-06-03 17:54:45] 启动前端服务...
+[2026-06-03 17:54:45] 前端服务已启动 (PID: 4146631)
+[2026-06-03 17:54:45] 所有服务启动完成
+
+> teacher-assistant-frontend@0.0.0 dev
+> vite
+
+17:54:46 [vite] (client) Re-optimizing dependencies because vite config has changed
+
+  VITE v6.4.1  ready in 949 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://10.10.12.47:3000/
+  ➜  Network: http://172.18.0.1:3000/
+  ➜  Network: http://172.19.0.1:3000/
+[2026-06-03 17:58:55] 停止服务...
+[2026-06-03 17:58:55] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 17:58:55] [INFO] 
+============================================================
+[2026-06-03 17:58:55] [INFO] 正在停止所有服务...
+[2026-06-03 17:58:55] [INFO] ------------------------------------------------------------
+[2026-06-03 17:58:55] [INFO] [OpenMAIC智能课堂服务] 停止中 (PID: 4146107)...
+[2026-06-03 17:58:55] 后端服务已停止 (PID: 4146094)
+[2026-06-03 17:58:55] [INFO] [OpenMAIC智能课堂服务] 已停止
+[2026-06-03 17:58:55] [INFO] ============================================================
+[2026-06-03 17:58:55] 前端服务已停止 (PID: 4146631)
+[2026-06-03 17:58:56] 所有服务已停止
+[2026-06-03 17:58:57] 检查依赖...
+[2026-06-03 17:58:57] 启动后端服务...
+[2026-06-03 17:58:57] 后端服务已启动 (PID: 4168701)
+[日志清理] 已删除 6 个旧日志文件，保留最近两次运行的日志
+[2026-06-03 17:58:58] [INFO] ============================================================
+[2026-06-03 17:58:58] [INFO] Teacher Assistant AI 服务启动管理器
+[2026-06-03 17:58:58] [INFO] ============================================================
+[2026-06-03 17:58:58] [INFO] 启动模式: 并行
+[2026-06-03 17:58:58] [INFO] 日志级别: INFO
+[2026-06-03 17:58:58] [INFO] ------------------------------------------------------------
+[2026-06-03 17:58:58] [INFO] [登录服务] 启动命令: 命令: /usr/bin/python3 /home/ubuntu/OmniAI Edu/backend/Login/login.py
+[2026-06-03 17:58:58] [INFO] [OpenMAIC智能课堂服务] 启动命令: 命令: pnpm dev --port 5006, 工作目录: /home/ubuntu/OmniAI Edu/backend/OpenMAIC
+[2026-06-03 17:58:58] [INFO] [API统一管理服务] 启动命令: 命令: /usr/bin/python3 /home/ubuntu/OmniAI Edu/backend/API_management/app.py --host 0.0.0.0 --port 5010
+[2026-06-03 17:58:58] [INFO] [手写数字识别服务(GPU)] 启动命令: 命令: /usr/bin/python3 /home/ubuntu/OmniAI Edu/backend/DigitRecognition/app.py
+[2026-06-03 17:58:58] [INFO] [练习反馈服务] 启动命令: 命令: /usr/bin/python3 /home/ubuntu/OmniAI Edu/backend/PracticeService/app.py
+[2026-06-03 17:59:00] [INFO] [OpenMAIC智能课堂服务] 启动成功 - PID: 4168833, Port: 5006, 耗时: 2.00s
+[2026-06-03 17:59:00] [INFO] [OpenMAIC智能课堂服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/openmaic_20260603_175858.log
+[2026-06-03 17:59:00] [ERROR] [登录服务] 启动失败: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/Login/login.py", line 1, in <module>
+    from flask import Flask, request, jsonify
+ModuleNotFoundError: No module named 'flask'
+
+[2026-06-03 17:59:00] [ERROR] [API统一管理服务] 启动失败: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/API_management/app.py", line 13, in <module>
+    from flask import Flask, request, jsonify
+ModuleNotFoundError: No module named 'flask'
+
+[2026-06-03 17:59:00] [ERROR] [手写数字识别服务(GPU)] 启动失败: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/DigitRecognition/app.py", line 6, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+
+[2026-06-03 17:59:00] [ERROR] [练习反馈服务] 启动失败: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/PracticeService/app.py", line 1, in <module>
+    from flask import Flask, request, jsonify, Response
+ModuleNotFoundError: No module named 'flask'
+
+[2026-06-03 17:59:00] [INFO] ------------------------------------------------------------
+[2026-06-03 17:59:00] [INFO] 启动完成 - 总计: 5 个服务
+[2026-06-03 17:59:00] [INFO]   成功: 1 个
+[2026-06-03 17:59:00] [INFO]   失败: 4 个
+[2026-06-03 17:59:00] [INFO]   总耗时: 2.00 秒
+[2026-06-03 17:59:00] [INFO] ------------------------------------------------------------
+[2026-06-03 17:59:00] [INFO] 服务状态详情:
+[2026-06-03 17:59:00] [INFO] 服务名称                 端口       PID        状态        
+[2026-06-03 17:59:00] [INFO] ------------------------------------------------------------
+[2026-06-03 17:59:00] [INFO] 登录服务               5000     4168831    ✗ failed
+[2026-06-03 17:59:00] [INFO]   错误: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/Login/login.py", line 1, in <module>
+    from flask import Flask, request, jsonify
+ModuleNotFoundError: No module named 'flask'
+
+[2026-06-03 17:59:00] [INFO] OpenMAIC智能课堂服务     5006     4168833    ✓ running
+[2026-06-03 17:59:00] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/openmaic_20260603_175858.log
+[2026-06-03 17:59:00] [INFO] API统一管理服务          5010     4168835    ✗ failed
+[2026-06-03 17:59:00] [INFO]   错误: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/API_management/app.py", line 13, in <module>
+    from flask import Flask, request, jsonify
+ModuleNotFoundError: No module named 'flask'
+
+[2026-06-03 17:59:00] [INFO] 手写数字识别服务(GPU)      5005     4168836    ✗ failed
+[2026-06-03 17:59:00] [INFO]   错误: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/DigitRecognition/app.py", line 6, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+
+[2026-06-03 17:59:00] [INFO] 练习反馈服务             5011     4168837    ✗ failed
+[2026-06-03 17:59:00] [INFO]   错误: Traceback (most recent call last):
+  File "/home/ubuntu/OmniAI Edu/backend/PracticeService/app.py", line 1, in <module>
+    from flask import Flask, request, jsonify, Response
+ModuleNotFoundError: No module named 'flask'
+
+[2026-06-03 17:59:01] [INFO] 启动报告已保存: /home/ubuntu/OmniAI Edu/backend/logs/latest_startup_report.txt
+[2026-06-03 17:59:01] [WARNING] 部分服务启动失败，请检查日志
+[2026-06-03 17:59:01] [INFO] 
+正在监控服务状态 (按 Ctrl+C 停止)...
+
+[2026-06-03 17:59:02] 启动前端服务...
+[2026-06-03 17:59:02] 前端服务已启动 (PID: 4169228)
+[2026-06-03 17:59:02] 所有服务启动完成
+
+> teacher-assistant-frontend@0.0.0 dev
+> vite
+
+
+  VITE v6.4.1  ready in 186 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://10.10.12.47:3000/
+  ➜  Network: http://172.18.0.1:3000/
+  ➜  Network: http://172.19.0.1:3000/
+[2026-06-03 18:03:24] 停止服务...
+[2026-06-03 18:03:24] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 18:03:24] [INFO] 
+============================================================
+[2026-06-03 18:03:24] [INFO] 正在停止所有服务...
+[2026-06-03 18:03:24] [INFO] ------------------------------------------------------------
+[2026-06-03 18:03:24] [INFO] [OpenMAIC智能课堂服务] 停止中 (PID: 4168833)...
+[2026-06-03 18:03:24] 后端服务已停止 (PID: 4168701)
+[2026-06-03 18:03:24] [INFO] [OpenMAIC智能课堂服务] 已停止
+[2026-06-03 18:03:24] [INFO] ============================================================
+[2026-06-03 18:03:24] 前端服务已停止 (PID: 4169228)
+[2026-06-03 18:03:24] 所有服务已停止
+[2026-06-03 18:03:32] 检查依赖...
+[2026-06-03 18:03:32] 启动后端服务...
+[2026-06-03 18:03:32] 后端服务已启动 (PID: 465)
+[日志清理] 已删除 6 个旧日志文件，保留最近两次运行的日志
+[2026-06-03 18:03:32] [INFO] ============================================================
+[2026-06-03 18:03:32] [INFO] Teacher Assistant AI 服务启动管理器
+[2026-06-03 18:03:32] [INFO] ============================================================
+[2026-06-03 18:03:32] [INFO] 启动模式: 并行
+[2026-06-03 18:03:32] [INFO] 日志级别: INFO
+[2026-06-03 18:03:32] [INFO] ------------------------------------------------------------
+[2026-06-03 18:03:32] [INFO] [登录服务] 启动命令: 命令: /usr/bin/python3 /home/ubuntu/OmniAI Edu/backend/Login/login.py
+[2026-06-03 18:03:32] [INFO] [API统一管理服务] 启动命令: 命令: /usr/bin/python3 /home/ubuntu/OmniAI Edu/backend/API_management/app.py --host 0.0.0.0 --port 5010
+[2026-06-03 18:03:32] [INFO] [OpenMAIC智能课堂服务] 启动命令: 命令: pnpm dev --port 5006, 工作目录: /home/ubuntu/OmniAI Edu/backend/OpenMAIC
+[2026-06-03 18:03:32] [INFO] [练习反馈服务] 启动命令: 命令: /usr/bin/python3 /home/ubuntu/OmniAI Edu/backend/PracticeService/app.py
+[2026-06-03 18:03:32] [INFO] [手写数字识别服务(GPU)] 启动命令: 命令: /usr/bin/python3 /home/ubuntu/OmniAI Edu/backend/DigitRecognition/app.py
+[2026-06-03 18:03:34] [INFO] [登录服务] 启动成功 - PID: 474, Port: 5000, 耗时: 2.00s
+[2026-06-03 18:03:34] [INFO] [登录服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/login_20260603_180332.log
+[2026-06-03 18:03:34] [INFO] [API统一管理服务] 启动成功 - PID: 476, Port: 5010, 耗时: 2.00s
+[2026-06-03 18:03:34] [INFO] [API统一管理服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/api_management_20260603_180332.log
+[2026-06-03 18:03:34] [INFO] [OpenMAIC智能课堂服务] 启动成功 - PID: 477, Port: 5006, 耗时: 2.00s
+[2026-06-03 18:03:34] [INFO] [练习反馈服务] 启动成功 - PID: 478, Port: 5011, 耗时: 2.00s
+[2026-06-03 18:03:34] [INFO] [手写数字识别服务(GPU)] 启动成功 - PID: 480, Port: 5005, 耗时: 2.00s
+[2026-06-03 18:03:34] [INFO] [OpenMAIC智能课堂服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/openmaic_20260603_180332.log
+[2026-06-03 18:03:34] [INFO] [练习反馈服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/practice_service_20260603_180332.log
+[2026-06-03 18:03:34] [INFO] [手写数字识别服务(GPU)] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/digit_recognition_20260603_180332.log
+[2026-06-03 18:03:34] [INFO] ------------------------------------------------------------
+[2026-06-03 18:03:34] [INFO] 启动完成 - 总计: 5 个服务
+[2026-06-03 18:03:34] [INFO]   成功: 5 个
+[2026-06-03 18:03:34] [INFO]   失败: 0 个
+[2026-06-03 18:03:34] [INFO]   总耗时: 2.01 秒
+[2026-06-03 18:03:34] [INFO] ------------------------------------------------------------
+[2026-06-03 18:03:34] [INFO] 服务状态详情:
+[2026-06-03 18:03:34] [INFO] 服务名称                 端口       PID        状态        
+[2026-06-03 18:03:34] [INFO] ------------------------------------------------------------
+[2026-06-03 18:03:34] [INFO] 登录服务               5000     474        ✓ running
+[2026-06-03 18:03:34] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/login_20260603_180332.log
+[2026-06-03 18:03:34] [INFO] OpenMAIC智能课堂服务     5006     477        ✓ running
+[2026-06-03 18:03:34] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/openmaic_20260603_180332.log
+[2026-06-03 18:03:34] [INFO] API统一管理服务          5010     476        ✓ running
+[2026-06-03 18:03:34] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/api_management_20260603_180332.log
+[2026-06-03 18:03:34] [INFO] 手写数字识别服务(GPU)      5005     480        ✓ running
+[2026-06-03 18:03:34] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/digit_recognition_20260603_180332.log
+[2026-06-03 18:03:34] [INFO] 练习反馈服务             5011     478        ✓ running
+[2026-06-03 18:03:34] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/practice_service_20260603_180332.log
+[2026-06-03 18:03:34] [INFO] 启动报告已保存: /home/ubuntu/OmniAI Edu/backend/logs/latest_startup_report.txt
+[2026-06-03 18:03:34] [INFO] 
+正在监控服务状态 (按 Ctrl+C 停止)...
+
+[2026-06-03 18:03:37] 启动前端服务...
+[2026-06-03 18:03:37] 前端服务已启动 (PID: 1147)
+[2026-06-03 18:03:37] 所有服务启动完成
+
+> teacher-assistant-frontend@0.0.0 dev
+> vite
+
+
+  VITE v6.4.1  ready in 5268 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://10.10.12.47:3000/
+  ➜  Network: http://172.18.0.1:3000/
+  ➜  Network: http://172.19.0.1:3000/
+[2026-06-03 18:10:17] 停止服务...
+[2026-06-03 18:10:17] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 18:10:17] [INFO] 
+============================================================
+[2026-06-03 18:10:17] [INFO] 正在停止所有服务...
+[2026-06-03 18:10:17] [INFO] ------------------------------------------------------------
+[2026-06-03 18:10:17] [INFO] [登录服务] 停止中 (PID: 474)...
+[2026-06-03 18:10:17] 后端服务已停止 (PID: 465)
+[2026-06-03 18:10:17] 前端服务已停止 (PID: 1147)
+[2026-06-03 18:10:17] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 18:10:17] [INFO] 
+============================================================
+[2026-06-03 18:10:17] [INFO] 正在停止所有服务...
+[2026-06-03 18:10:17] [INFO] ------------------------------------------------------------
+[2026-06-03 18:10:17] [INFO] [登录服务] 停止中 (PID: 474)...
+[2026-06-03 18:10:17] 所有服务已停止
+[2026-06-03 18:10:17] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 18:10:17] [INFO] 
+============================================================
+[2026-06-03 18:10:17] [INFO] 正在停止所有服务...
+[2026-06-03 18:10:17] [INFO] ------------------------------------------------------------
+[2026-06-03 18:10:17] [INFO] [登录服务] 停止中 (PID: 474)...
+[2026-06-03 18:10:17] [INFO] [登录服务] 已停止
+[2026-06-03 18:10:17] [INFO] [练习反馈服务] 停止中 (PID: 478)...
+[2026-06-03 18:10:17] [INFO] [练习反馈服务] 已停止
+[2026-06-03 18:10:17] [INFO] ============================================================
+[2026-06-03 18:10:18] 检查依赖...
+[2026-06-03 18:10:18] 使用 Python 环境: TAA (/home/ubuntu/anaconda3/envs/TAA/bin/python)
+[2026-06-03 18:10:18] 启动后端服务 (使用 TAA 环境)...
+[2026-06-03 18:10:18] 后端服务已启动 (PID: 38581)
+[日志清理] 已删除 6 个旧日志文件，保留最近两次运行的日志
+[2026-06-03 18:10:18] [INFO] ============================================================
+[2026-06-03 18:10:18] [INFO] Teacher Assistant AI 服务启动管理器
+[2026-06-03 18:10:18] [INFO] ============================================================
+[2026-06-03 18:10:18] [INFO] 启动模式: 并行
+[2026-06-03 18:10:18] [INFO] 日志级别: INFO
+[2026-06-03 18:10:18] [INFO] ------------------------------------------------------------
+[2026-06-03 18:10:18] [INFO] [登录服务] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/Login/login.py
+[2026-06-03 18:10:18] [INFO] [OpenMAIC智能课堂服务] 启动命令: 命令: pnpm dev --port 5006, 工作目录: /home/ubuntu/OmniAI Edu/backend/OpenMAIC
+[2026-06-03 18:10:18] [INFO] [API统一管理服务] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/API_management/app.py --host 0.0.0.0 --port 5010
+[2026-06-03 18:10:18] [INFO] [练习反馈服务] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/PracticeService/app.py
+[2026-06-03 18:10:18] [INFO] [手写数字识别服务(GPU)] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/DigitRecognition/app.py
+[2026-06-03 18:10:20] [INFO] [登录服务] 启动成功 - PID: 38588, Port: 5000, 耗时: 2.00s
+[2026-06-03 18:10:20] [INFO] [登录服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/login_20260603_181018.log
+[2026-06-03 18:10:20] [INFO] [OpenMAIC智能课堂服务] 启动成功 - PID: 38592, Port: 5006, 耗时: 2.00s
+[2026-06-03 18:10:20] [INFO] [OpenMAIC智能课堂服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/openmaic_20260603_181018.log
+[2026-06-03 18:10:20] [INFO] [API统一管理服务] 启动成功 - PID: 38593, Port: 5010, 耗时: 2.00s
+[2026-06-03 18:10:20] [INFO] [API统一管理服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/api_management_20260603_181018.log
+[2026-06-03 18:10:20] [INFO] [练习反馈服务] 启动成功 - PID: 38594, Port: 5011, 耗时: 2.00s
+[2026-06-03 18:10:20] [INFO] [手写数字识别服务(GPU)] 启动成功 - PID: 38595, Port: 5005, 耗时: 2.00s
+[2026-06-03 18:10:20] [INFO] [练习反馈服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/practice_service_20260603_181018.log
+[2026-06-03 18:10:20] [INFO] [手写数字识别服务(GPU)] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/digit_recognition_20260603_181018.log
+[2026-06-03 18:10:20] [INFO] ------------------------------------------------------------
+[2026-06-03 18:10:20] [INFO] 启动完成 - 总计: 5 个服务
+[2026-06-03 18:10:20] [INFO]   成功: 5 个
+[2026-06-03 18:10:20] [INFO]   失败: 0 个
+[2026-06-03 18:10:20] [INFO]   总耗时: 2.00 秒
+[2026-06-03 18:10:20] [INFO] ------------------------------------------------------------
+[2026-06-03 18:10:20] [INFO] 服务状态详情:
+[2026-06-03 18:10:20] [INFO] 服务名称                 端口       PID        状态        
+[2026-06-03 18:10:20] [INFO] ------------------------------------------------------------
+[2026-06-03 18:10:20] [INFO] 登录服务               5000     38588      ✓ running
+[2026-06-03 18:10:20] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/login_20260603_181018.log
+[2026-06-03 18:10:20] [INFO] OpenMAIC智能课堂服务     5006     38592      ✓ running
+[2026-06-03 18:10:20] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/openmaic_20260603_181018.log
+[2026-06-03 18:10:20] [INFO] API统一管理服务          5010     38593      ✓ running
+[2026-06-03 18:10:20] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/api_management_20260603_181018.log
+[2026-06-03 18:10:20] [INFO] 手写数字识别服务(GPU)      5005     38595      ✓ running
+[2026-06-03 18:10:20] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/digit_recognition_20260603_181018.log
+[2026-06-03 18:10:20] [INFO] 练习反馈服务             5011     38594      ✓ running
+[2026-06-03 18:10:20] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/practice_service_20260603_181018.log
+[2026-06-03 18:10:20] [INFO] 启动报告已保存: /home/ubuntu/OmniAI Edu/backend/logs/latest_startup_report.txt
+[2026-06-03 18:10:20] [INFO] 
+正在监控服务状态 (按 Ctrl+C 停止)...
+
+[2026-06-03 18:10:23] 启动前端服务...
+[2026-06-03 18:10:23] 前端服务已启动 (PID: 39120)
+[2026-06-03 18:10:23] 所有服务启动完成
+
+> teacher-assistant-frontend@0.0.0 dev
+> vite
+
+
+  VITE v6.4.1  ready in 194 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://10.10.12.47:3000/
+  ➜  Network: http://172.18.0.1:3000/
+  ➜  Network: http://172.19.0.1:3000/
+[2026-06-03 18:15:45] 停止服务...
+[2026-06-03 18:15:45] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 18:15:45] [INFO] 
+============================================================
+[2026-06-03 18:15:45] [INFO] 正在停止所有服务...
+[2026-06-03 18:15:45] [INFO] ------------------------------------------------------------
+[2026-06-03 18:15:45] [INFO] [登录服务] 停止中 (PID: 38588)...
+[2026-06-03 18:15:45] 后端服务已停止 (PID: 38581)
+[2026-06-03 18:15:45] 前端服务已停止 (PID: 39120)
+[2026-06-03 18:15:45] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 18:15:45] [INFO] 
+============================================================
+[2026-06-03 18:15:45] [INFO] 正在停止所有服务...
+[2026-06-03 18:15:45] [INFO] ------------------------------------------------------------
+[2026-06-03 18:15:45] [INFO] [登录服务] 停止中 (PID: 38588)...
+[2026-06-03 18:15:45] 所有服务已停止
+[2026-06-03 18:15:45] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 18:15:45] [INFO] 
+============================================================
+[2026-06-03 18:15:45] [INFO] 正在停止所有服务...
+[2026-06-03 18:15:45] [INFO] ------------------------------------------------------------
+[2026-06-03 18:15:45] [INFO] [登录服务] 停止中 (PID: 38588)...
+[2026-06-03 18:15:45] [INFO] [登录服务] 已停止
+[2026-06-03 18:15:45] [INFO] [手写数字识别服务(GPU)] 停止中 (PID: 38595)...
+[2026-06-03 18:15:46] [INFO] [手写数字识别服务(GPU)] 已停止
+[2026-06-03 18:15:46] [INFO] [练习反馈服务] 停止中 (PID: 38594)...
+[2026-06-03 18:15:47] [INFO] [练习反馈服务] 已停止
+[2026-06-03 18:15:47] [INFO] ============================================================
+[2026-06-03 18:15:47] 检查依赖...
+[2026-06-03 18:15:47] 使用 Python 环境: TAA (/home/ubuntu/anaconda3/envs/TAA/bin/python)
+[2026-06-03 18:15:47] 启动后端服务 (使用 TAA 环境)...
+[2026-06-03 18:15:47] 后端服务已启动 (PID: 69270)
+[日志清理] 已删除 6 个旧日志文件，保留最近两次运行的日志
+[2026-06-03 18:15:47] [INFO] ============================================================
+[2026-06-03 18:15:47] [INFO] Teacher Assistant AI 服务启动管理器
+[2026-06-03 18:15:47] [INFO] ============================================================
+[2026-06-03 18:15:47] [INFO] 启动模式: 并行
+[2026-06-03 18:15:47] [INFO] 日志级别: INFO
+[2026-06-03 18:15:47] [INFO] ------------------------------------------------------------
+[2026-06-03 18:15:47] [INFO] [登录服务] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/Login/login.py
+[2026-06-03 18:15:47] [INFO] [OpenMAIC智能课堂服务] 启动命令: 命令: pnpm dev --port 5006, 工作目录: /home/ubuntu/OmniAI Edu/backend/OpenMAIC
+[2026-06-03 18:15:47] [INFO] [API统一管理服务] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/API_management/app.py --host 0.0.0.0 --port 5010
+[2026-06-03 18:15:47] [INFO] [手写数字识别服务(GPU)] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/DigitRecognition/app.py
+[2026-06-03 18:15:47] [INFO] [练习反馈服务] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/PracticeService/app.py
+[2026-06-03 18:15:49] [INFO] [登录服务] 启动成功 - PID: 69278, Port: 5000, 耗时: 2.00s
+[2026-06-03 18:15:49] [INFO] [登录服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/login_20260603_181547.log
+[2026-06-03 18:15:49] [INFO] [API统一管理服务] 启动成功 - PID: 69283, Port: 5010, 耗时: 2.00s
+[2026-06-03 18:15:49] [INFO] [API统一管理服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/api_management_20260603_181547.log
+[2026-06-03 18:15:49] [INFO] [OpenMAIC智能课堂服务] 启动成功 - PID: 69282, Port: 5006, 耗时: 2.00s
+[2026-06-03 18:15:49] [INFO] [OpenMAIC智能课堂服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/openmaic_20260603_181547.log
+[2026-06-03 18:15:49] [INFO] [练习反馈服务] 启动成功 - PID: 69286, Port: 5011, 耗时: 2.00s
+[2026-06-03 18:15:49] [INFO] [手写数字识别服务(GPU)] 启动成功 - PID: 69285, Port: 5005, 耗时: 2.00s
+[2026-06-03 18:15:49] [INFO] [练习反馈服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/practice_service_20260603_181547.log
+[2026-06-03 18:15:49] [INFO] [手写数字识别服务(GPU)] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/digit_recognition_20260603_181547.log
+[2026-06-03 18:15:49] [INFO] ------------------------------------------------------------
+[2026-06-03 18:15:49] [INFO] 启动完成 - 总计: 5 个服务
+[2026-06-03 18:15:49] [INFO]   成功: 5 个
+[2026-06-03 18:15:49] [INFO]   失败: 0 个
+[2026-06-03 18:15:49] [INFO]   总耗时: 2.00 秒
+[2026-06-03 18:15:49] [INFO] ------------------------------------------------------------
+[2026-06-03 18:15:49] [INFO] 服务状态详情:
+[2026-06-03 18:15:49] [INFO] 服务名称                 端口       PID        状态        
+[2026-06-03 18:15:49] [INFO] ------------------------------------------------------------
+[2026-06-03 18:15:49] [INFO] 登录服务               5000     69278      ✓ running
+[2026-06-03 18:15:49] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/login_20260603_181547.log
+[2026-06-03 18:15:49] [INFO] OpenMAIC智能课堂服务     5006     69282      ✓ running
+[2026-06-03 18:15:49] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/openmaic_20260603_181547.log
+[2026-06-03 18:15:49] [INFO] API统一管理服务          5010     69283      ✓ running
+[2026-06-03 18:15:49] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/api_management_20260603_181547.log
+[2026-06-03 18:15:49] [INFO] 手写数字识别服务(GPU)      5005     69285      ✓ running
+[2026-06-03 18:15:49] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/digit_recognition_20260603_181547.log
+[2026-06-03 18:15:49] [INFO] 练习反馈服务             5011     69286      ✓ running
+[2026-06-03 18:15:49] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/practice_service_20260603_181547.log
+[2026-06-03 18:15:49] [INFO] 启动报告已保存: /home/ubuntu/OmniAI Edu/backend/logs/latest_startup_report.txt
+[2026-06-03 18:15:49] [INFO] 
+正在监控服务状态 (按 Ctrl+C 停止)...
+
+[2026-06-03 18:15:52] 启动前端服务...
+[2026-06-03 18:15:52] 前端服务已启动 (PID: 69949)
+[2026-06-03 18:15:52] 所有服务启动完成
+
+> teacher-assistant-frontend@0.0.0 dev
+> vite
+
+
+  VITE v6.4.1  ready in 1125 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://10.10.12.47:3000/
+  ➜  Network: http://172.18.0.1:3000/
+  ➜  Network: http://172.19.0.1:3000/
+[2026-06-03 18:18:18] 停止服务...
+[2026-06-03 18:18:18] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 18:18:18] [INFO] 
+============================================================
+[2026-06-03 18:18:18] [INFO] 正在停止所有服务...
+[2026-06-03 18:18:18] [INFO] ------------------------------------------------------------
+[2026-06-03 18:18:18] [INFO] [登录服务] 停止中 (PID: 69278)...
+[2026-06-03 18:18:18] 后端服务已停止 (PID: 69270)
+[2026-06-03 18:18:18] 前端服务已停止 (PID: 69949)
+[2026-06-03 18:18:18] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 18:18:18] [INFO] 
+============================================================
+[2026-06-03 18:18:18] [INFO] 正在停止所有服务...
+[2026-06-03 18:18:18] [INFO] ------------------------------------------------------------
+[2026-06-03 18:18:18] [INFO] [登录服务] 停止中 (PID: 69278)...
+[2026-06-03 18:18:18] 所有服务已停止
+[2026-06-03 18:18:18] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 18:18:18] [INFO] 
+============================================================
+[2026-06-03 18:18:18] [INFO] 正在停止所有服务...
+[2026-06-03 18:18:18] [INFO] ------------------------------------------------------------
+[2026-06-03 18:18:18] [INFO] [登录服务] 停止中 (PID: 69278)...
+[2026-06-03 18:18:18] [INFO] [登录服务] 已停止
+[2026-06-03 18:18:18] [INFO] [手写数字识别服务(GPU)] 停止中 (PID: 69285)...
+[2026-06-03 18:18:18] [INFO] [手写数字识别服务(GPU)] 已停止
+[2026-06-03 18:18:18] [INFO] [练习反馈服务] 停止中 (PID: 69286)...
+[2026-06-03 18:18:19] [INFO] [练习反馈服务] 已停止
+[2026-06-03 18:18:19] [INFO] ============================================================
+[2026-06-03 18:18:19] 检查依赖...
+[2026-06-03 18:18:19] 使用 Python 环境: TAA (/home/ubuntu/anaconda3/envs/TAA/bin/python)
+[2026-06-03 18:18:19] 启动后端服务 (使用 TAA 环境)...
+[2026-06-03 18:18:19] 后端服务已启动 (PID: 83490)
+[日志清理] 已删除 6 个旧日志文件，保留最近两次运行的日志
+[2026-06-03 18:18:19] [INFO] ============================================================
+[2026-06-03 18:18:19] [INFO] Teacher Assistant AI 服务启动管理器
+[2026-06-03 18:18:19] [INFO] ============================================================
+[2026-06-03 18:18:19] [INFO] 启动模式: 并行
+[2026-06-03 18:18:19] [INFO] 日志级别: INFO
+[2026-06-03 18:18:19] [INFO] ------------------------------------------------------------
+[2026-06-03 18:18:19] [INFO] [登录服务] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/Login/login.py
+[2026-06-03 18:18:19] [INFO] [API统一管理服务] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/API_management/app.py --host 0.0.0.0 --port 5010
+[2026-06-03 18:18:19] [INFO] [OpenMAIC智能课堂服务] 启动命令: 命令: pnpm dev --port 5006, 工作目录: /home/ubuntu/OmniAI Edu/backend/OpenMAIC
+[2026-06-03 18:18:19] [INFO] [手写数字识别服务(GPU)] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/DigitRecognition/app.py
+[2026-06-03 18:18:19] [INFO] [练习反馈服务] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/PracticeService/app.py
+[2026-06-03 18:18:21] [INFO] [登录服务] 启动成功 - PID: 83501, Port: 5000, 耗时: 2.00s
+[2026-06-03 18:18:21] [INFO] [API统一管理服务] 启动成功 - PID: 83502, Port: 5010, 耗时: 2.00s
+[2026-06-03 18:18:21] [INFO] [练习反馈服务] 启动成功 - PID: 83505, Port: 5011, 耗时: 2.00s
+[2026-06-03 18:18:21] [INFO] [练习反馈服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/practice_service_20260603_181819.log
+[2026-06-03 18:18:21] [INFO] [OpenMAIC智能课堂服务] 启动成功 - PID: 83503, Port: 5006, 耗时: 2.00s
+[2026-06-03 18:18:21] [INFO] [登录服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/login_20260603_181819.log
+[2026-06-03 18:18:21] [INFO] [API统一管理服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/api_management_20260603_181819.log
+[2026-06-03 18:18:21] [INFO] [手写数字识别服务(GPU)] 启动成功 - PID: 83504, Port: 5005, 耗时: 2.00s
+[2026-06-03 18:18:21] [INFO] [OpenMAIC智能课堂服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/openmaic_20260603_181819.log
+[2026-06-03 18:18:21] [INFO] [手写数字识别服务(GPU)] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/digit_recognition_20260603_181819.log
+[2026-06-03 18:18:21] [INFO] ------------------------------------------------------------
+[2026-06-03 18:18:21] [INFO] 启动完成 - 总计: 5 个服务
+[2026-06-03 18:18:21] [INFO]   成功: 5 个
+[2026-06-03 18:18:21] [INFO]   失败: 0 个
+[2026-06-03 18:18:21] [INFO]   总耗时: 2.00 秒
+[2026-06-03 18:18:21] [INFO] ------------------------------------------------------------
+[2026-06-03 18:18:21] [INFO] 服务状态详情:
+[2026-06-03 18:18:21] [INFO] 服务名称                 端口       PID        状态        
+[2026-06-03 18:18:21] [INFO] ------------------------------------------------------------
+[2026-06-03 18:18:21] [INFO] 登录服务               5000     83501      ✓ running
+[2026-06-03 18:18:21] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/login_20260603_181819.log
+[2026-06-03 18:18:21] [INFO] OpenMAIC智能课堂服务     5006     83503      ✓ running
+[2026-06-03 18:18:21] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/openmaic_20260603_181819.log
+[2026-06-03 18:18:21] [INFO] API统一管理服务          5010     83502      ✓ running
+[2026-06-03 18:18:21] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/api_management_20260603_181819.log
+[2026-06-03 18:18:21] [INFO] 手写数字识别服务(GPU)      5005     83504      ✓ running
+[2026-06-03 18:18:21] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/digit_recognition_20260603_181819.log
+[2026-06-03 18:18:21] [INFO] 练习反馈服务             5011     83505      ✓ running
+[2026-06-03 18:18:21] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/practice_service_20260603_181819.log
+[2026-06-03 18:18:21] [INFO] 启动报告已保存: /home/ubuntu/OmniAI Edu/backend/logs/latest_startup_report.txt
+[2026-06-03 18:18:21] [INFO] 
+正在监控服务状态 (按 Ctrl+C 停止)...
+
+[2026-06-03 18:18:24] 启动前端服务...
+[2026-06-03 18:18:24] 前端服务已启动 (PID: 84076)
+[2026-06-03 18:18:24] 所有服务启动完成
+
+> teacher-assistant-frontend@0.0.0 dev
+> vite
+
+
+  VITE v6.4.1  ready in 193 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://10.10.12.47:3000/
+  ➜  Network: http://172.18.0.1:3000/
+  ➜  Network: http://172.19.0.1:3000/
+18:19:35 [vite] vite.config.js changed, restarting server...
+18:19:35 [vite] server restarted.
+[2026-06-03 18:23:07] 停止服务...
+[2026-06-03 18:23:07] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 18:23:07] [INFO] 
+============================================================
+[2026-06-03 18:23:07] [INFO] 正在停止所有服务...
+[2026-06-03 18:23:07] [INFO] ------------------------------------------------------------
+[2026-06-03 18:23:07] [INFO] [登录服务] 停止中 (PID: 83501)...
+[2026-06-03 18:23:07] 后端服务已停止 (PID: 83490)
+[2026-06-03 18:23:07] 前端服务已停止 (PID: 84076)
+[2026-06-03 18:23:07] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 18:23:07] [INFO] 
+============================================================
+[2026-06-03 18:23:07] [INFO] 正在停止所有服务...
+[2026-06-03 18:23:07] [INFO] ------------------------------------------------------------
+[2026-06-03 18:23:07] [INFO] [登录服务] 停止中 (PID: 83501)...
+[2026-06-03 18:23:07] 所有服务已停止
+[2026-06-03 18:23:07] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 18:23:07] [INFO] 
+============================================================
+[2026-06-03 18:23:07] [INFO] 正在停止所有服务...
+[2026-06-03 18:23:07] [INFO] ------------------------------------------------------------
+[2026-06-03 18:23:07] [INFO] [登录服务] 停止中 (PID: 83501)...
+[2026-06-03 18:23:07] [INFO] [登录服务] 已停止
+[2026-06-03 18:23:07] [INFO] [手写数字识别服务(GPU)] 停止中 (PID: 83504)...
+[2026-06-03 18:23:07] [INFO] [手写数字识别服务(GPU)] 已停止
+[2026-06-03 18:23:07] [INFO] [练习反馈服务] 停止中 (PID: 83505)...
+[2026-06-03 18:23:08] [INFO] [练习反馈服务] 已停止
+[2026-06-03 18:23:08] [INFO] ============================================================
+[2026-06-03 18:23:08] 检查依赖...
+[2026-06-03 18:23:08] 使用 Python 环境: TAA (/home/ubuntu/anaconda3/envs/TAA/bin/python)
+[2026-06-03 18:23:08] 启动后端服务 (使用 TAA 环境)...
+[2026-06-03 18:23:08] 后端服务已启动 (PID: 110897)
+[日志清理] 已删除 6 个旧日志文件，保留最近两次运行的日志
+[2026-06-03 18:23:08] [INFO] ============================================================
+[2026-06-03 18:23:08] [INFO] Teacher Assistant AI 服务启动管理器
+[2026-06-03 18:23:08] [INFO] ============================================================
+[2026-06-03 18:23:08] [INFO] 启动模式: 并行
+[2026-06-03 18:23:08] [INFO] 日志级别: INFO
+[2026-06-03 18:23:08] [INFO] ------------------------------------------------------------
+[2026-06-03 18:23:08] [INFO] [登录服务] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/Login/login.py
+[2026-06-03 18:23:08] [INFO] [OpenMAIC智能课堂服务] 启动命令: 命令: pnpm dev --port 5006, 工作目录: /home/ubuntu/OmniAI Edu/backend/OpenMAIC
+[2026-06-03 18:23:08] [INFO] [API统一管理服务] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/API_management/app.py --host 0.0.0.0 --port 5010
+[2026-06-03 18:23:08] [INFO] [手写数字识别服务(GPU)] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/DigitRecognition/app.py
+[2026-06-03 18:23:08] [INFO] [练习反馈服务] 启动命令: 命令: /home/ubuntu/anaconda3/envs/TAA/bin/python /home/ubuntu/OmniAI Edu/backend/PracticeService/app.py
+[2026-06-03 18:23:10] [INFO] [登录服务] 启动成功 - PID: 110905, Port: 5000, 耗时: 2.00s
+[2026-06-03 18:23:10] [INFO] [OpenMAIC智能课堂服务] 启动成功 - PID: 110907, Port: 5006, 耗时: 2.00s
+[2026-06-03 18:23:10] [INFO] [登录服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/login_20260603_182308.log
+[2026-06-03 18:23:10] [INFO] [API统一管理服务] 启动成功 - PID: 110910, Port: 5010, 耗时: 2.00s
+[2026-06-03 18:23:10] [INFO] [手写数字识别服务(GPU)] 启动成功 - PID: 110911, Port: 5005, 耗时: 2.00s
+[2026-06-03 18:23:10] [INFO] [练习反馈服务] 启动成功 - PID: 110912, Port: 5011, 耗时: 2.00s
+[2026-06-03 18:23:10] [INFO] [OpenMAIC智能课堂服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/openmaic_20260603_182308.log
+[2026-06-03 18:23:10] [INFO] [API统一管理服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/api_management_20260603_182308.log
+[2026-06-03 18:23:10] [INFO] [手写数字识别服务(GPU)] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/digit_recognition_20260603_182308.log
+[2026-06-03 18:23:10] [INFO] [练习反馈服务] 日志文件: /home/ubuntu/OmniAI Edu/backend/logs/services/practice_service_20260603_182308.log
+[2026-06-03 18:23:10] [INFO] ------------------------------------------------------------
+[2026-06-03 18:23:10] [INFO] 启动完成 - 总计: 5 个服务
+[2026-06-03 18:23:10] [INFO]   成功: 5 个
+[2026-06-03 18:23:10] [INFO]   失败: 0 个
+[2026-06-03 18:23:10] [INFO]   总耗时: 2.00 秒
+[2026-06-03 18:23:10] [INFO] ------------------------------------------------------------
+[2026-06-03 18:23:10] [INFO] 服务状态详情:
+[2026-06-03 18:23:10] [INFO] 服务名称                 端口       PID        状态        
+[2026-06-03 18:23:10] [INFO] ------------------------------------------------------------
+[2026-06-03 18:23:10] [INFO] 登录服务               5000     110905     ✓ running
+[2026-06-03 18:23:10] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/login_20260603_182308.log
+[2026-06-03 18:23:10] [INFO] OpenMAIC智能课堂服务     5006     110907     ✓ running
+[2026-06-03 18:23:10] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/openmaic_20260603_182308.log
+[2026-06-03 18:23:10] [INFO] API统一管理服务          5010     110910     ✓ running
+[2026-06-03 18:23:10] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/api_management_20260603_182308.log
+[2026-06-03 18:23:10] [INFO] 手写数字识别服务(GPU)      5005     110911     ✓ running
+[2026-06-03 18:23:10] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/digit_recognition_20260603_182308.log
+[2026-06-03 18:23:10] [INFO] 练习反馈服务             5011     110912     ✓ running
+[2026-06-03 18:23:10] [INFO]   日志: /home/ubuntu/OmniAI Edu/backend/logs/services/practice_service_20260603_182308.log
+[2026-06-03 18:23:10] [INFO] 启动报告已保存: /home/ubuntu/OmniAI Edu/backend/logs/latest_startup_report.txt
+[2026-06-03 18:23:10] [INFO] 
+正在监控服务状态 (按 Ctrl+C 停止)...
+
+[2026-06-03 18:23:13] 启动前端服务...
+[2026-06-03 18:23:13] 前端服务已启动 (PID: 111536)
+[2026-06-03 18:23:13] 所有服务启动完成
+
+> teacher-assistant-frontend@0.0.0 dev
+> vite
+
+
+  VITE v6.4.1  ready in 205 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://10.10.12.47:3000/
+  ➜  Network: http://172.18.0.1:3000/
+  ➜  Network: http://172.19.0.1:3000/
+18:25:04 [vite] vite.config.js changed, restarting server...
+18:25:04 [vite] server restarted.
+18:25:10 [vite] vite.config.js changed, restarting server...
+18:25:10 [vite] server restarted.
+18:25:16 [vite] vite.config.js changed, restarting server...
+18:25:16 [vite] server restarted.
+18:25:19 [vite] vite.config.js changed, restarting server...
+18:25:19 [vite] server restarted.
+18:25:48 [vite] vite.config.js changed, restarting server...
+18:25:48 [vite] server restarted.
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: use --host to expose
+18:36:46 [vite] vite.config.js changed, restarting server...
+18:36:46 [vite] (client) Re-optimizing dependencies because vite config has changed
+18:36:46 [vite] server restarted.
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: http://10.10.12.47:3000/
+  ➜  Network: http://172.18.0.1:3000/
+  ➜  Network: http://172.19.0.1:3000/
+18:37:14 [vite] (client) page reload src/config/api.js
+[2026-06-03 18:38:05] [INFO] 
+收到信号 SIGTERM，开始优雅关闭服务...
+[2026-06-03 18:38:05] [INFO] 
+============================================================
+[2026-06-03 18:38:05] [INFO] 正在停止所有服务...
+[2026-06-03 18:38:05] [INFO] ------------------------------------------------------------
+[2026-06-03 18:38:05] [INFO] [登录服务] 停止中 (PID: 110905)...
+[2026-06-03 18:38:05] [INFO] [登录服务] 已停止
+[2026-06-03 18:38:05] [INFO] [练习反馈服务] 停止中 (PID: 110912)...
+[2026-06-03 18:38:06] [INFO] [练习反馈服务] 已停止
+[2026-06-03 18:38:06] [INFO] ============================================================

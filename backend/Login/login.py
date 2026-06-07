@@ -22,21 +22,23 @@ except Exception as e:
     print(f"⚠️ MongoDB 连接失败: {e}")
     print("📝 使用内存模式运行（测试用）")
 
-memory_users = {}
-
-DEFAULT_USERS = {
-    "teacher": {"role": "teacher"},
-    "admin": {"role": "admin"},
-    "student": {"role": "student"},
-}
-
-for username, info in DEFAULT_USERS.items():
-    default_pwd = os.environ.get(f"DEFAULT_{username.upper()}_PASSWORD", "changeme")
-    memory_users[username] = {
-        "username": username,
-        "password": generate_password_hash(default_pwd),
-        "role": info["role"]
+memory_users = {
+    "teacher": {
+        "username": "teacher",
+        "password": generate_password_hash("123456"),
+        "role": "teacher"
+    },
+    "admin": {
+        "username": "admin",
+        "password": generate_password_hash("admin123"),
+        "role": "admin"
+    },
+    "student": {
+        "username": "student",
+        "password": generate_password_hash("123456"),
+        "role": "student"
     }
+}
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -127,7 +129,9 @@ if __name__ == '__main__':
     print("🔐 登录服务启动")
     print("=" * 50)
     if not MONGODB_AVAILABLE:
-        print("📝 内存模式 - 测试账号已通过环境变量配置")
-        print("   设置 DEFAULT_TEACHER_PASSWORD, DEFAULT_ADMIN_PASSWORD, DEFAULT_STUDENT_PASSWORD")
+        print("📝 内存模式 - 测试账号:")
+        print("   用户名: teacher, 密码: 123456")
+        print("   用户名: admin, 密码: admin123")
+        print("   用户名: student, 密码: 123456")
     print("=" * 50)
     app.run(debug=True, host='0.0.0.0', port=5000)

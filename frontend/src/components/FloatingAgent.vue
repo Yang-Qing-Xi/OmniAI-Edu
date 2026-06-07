@@ -287,7 +287,7 @@ export default {
 
       try {
         const history = this.messages.slice(-10, -1)
-        const response = await fetch('/agent-api/api/agent/chat/stream', {
+        const response = await fetch('/api/agent/chat/stream', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: text, history }),

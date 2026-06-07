@@ -1,0 +1,67 @@
+/home/ubuntu/anaconda3/envs/TAA/lib/python3.12/site-packages/requests/__init__.py:86: RequestsDependencyWarning: Unable to find acceptable character detection dependency (chardet or charset_normalizer).
+  warnings.warn(
+✅ PracticeService MongoDB 连接成功
+✅ LangChain + 通义千问 初始化成功
+==================================================
+📝 练习反馈服务启动
+==================================================
+   MongoDB: ✅ 已连接
+   LangChain: ✅ 已连接
+   模型: qwen-plus
+==================================================
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5011
+ * Running on http://10.10.12.47:5011
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+/home/ubuntu/anaconda3/envs/TAA/lib/python3.12/site-packages/requests/__init__.py:86: RequestsDependencyWarning: Unable to find acceptable character detection dependency (chardet or charset_normalizer).
+  warnings.warn(
+ * Debugger is active!
+ * Debugger PIN: 222-119-929
+127.0.0.1 - - [03/Jun/2026 20:47:54] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:48:06] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:31] "GET /api/practice/history?username=aaa&page=1&page_size=10 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:33] "GET /api/practice/radar?username=aaa HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:33] "GET /api/practice/stats?username=aaa HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:33] "GET /api/practice/wrong-questions?username=aaa HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:35] "GET /api/practice/leaderboard?username=aaa&type=total HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:35] "GET /api/practice/leaderboard?username=aaa&type=weekly HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:36] "GET /api/practice/leaderboard?username=aaa&type=total HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:38] "GET /api/practice/wrong-questions?username=aaa HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:39] "GET /api/practice/radar?username=aaa HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:39] "GET /api/practice/stats?username=aaa HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:40] "GET /api/practice/leaderboard?username=aaa&type=total HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:41] "GET /api/practice/leaderboard?username=aaa&type=weekly HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:43] "GET /api/practice/leaderboard?username=aaa&type=total HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:44] "GET /api/practice/history?username=aaa&page=1&page_size=10 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:51:44] "GET /api/practice/wrong-questions?username=aaa HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:52:00] code 400, message Bad request syntax ('GET /api/practice/stats?username=å¼\xa0ä¸\x89 HTTP/1.1')
+127.0.0.1 - - [03/Jun/2026 20:52:00] "[31m[1mGET /api/practice/stats?username=å¼ ä¸\x89 HTTP/1.1[0m" 400 -
+127.0.0.1 - - [03/Jun/2026 20:52:00] code 400, message Bad request syntax ('GET /api/practice/history?username=å¼\xa0ä¸\x89&page=1&page_size=3 HTTP/1.1')
+127.0.0.1 - - [03/Jun/2026 20:52:00] "[31m[1mGET /api/practice/history?username=å¼ ä¸\x89&page=1&page_size=3 HTTP/1.1[0m" 400 -
+127.0.0.1 - - [03/Jun/2026 20:52:24] "GET /api/practice/stats?username=teacher HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:52:34] "GET /api/practice/leaderboard?type=total&limit=5 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:52:34] "GET /api/practice/radar?username=teacher HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:52:34] "GET /api/practice/history?username=teacher&page=1&page_size=3 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:54:13] "POST /api/agent/chat/stream HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 20:54:31] "POST /api/agent/chat/stream HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 21:07:52] "POST /api/practice/generate HTTP/1.1" 200 -
+/home/ubuntu/OmniAI Edu/backend/PracticeService/app.py:735: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "created_at": datetime.datetime.utcnow()
+/home/ubuntu/OmniAI Edu/backend/PracticeService/app.py:742: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  wq["created_at"] = datetime.datetime.utcnow()
+/home/ubuntu/OmniAI Edu/backend/PracticeService/app.py:394: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.datetime.utcnow()
+127.0.0.1 - - [03/Jun/2026 21:08:01] "POST /api/practice/submit HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 21:08:16] "GET /api/practice/history?username=aaa&page=1&page_size=10 HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 21:08:23] "GET /api/practice/wrong-questions?username=aaa HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 21:08:26] "GET /api/practice/radar?username=aaa HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 21:08:26] "GET /api/practice/stats?username=aaa HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 21:08:34] "GET /api/practice/leaderboard?username=aaa&type=total HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 21:08:42] "GET /api/practice/leaderboard?username=aaa&type=weekly HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 21:08:44] "GET /api/practice/leaderboard?username=aaa&type=total HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 21:12:25] "POST /api/agent/chat/stream HTTP/1.1" 200 -
+127.0.0.1 - - [03/Jun/2026 21:15:02] "GET /api/practice/history?username=aaa&page=1&page_size=10 HTTP/1.1" 200 -

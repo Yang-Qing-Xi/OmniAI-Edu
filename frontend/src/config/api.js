@@ -1,23 +1,23 @@
 const API_CONFIG = {
   LOGIN_SERVICE: {
-    BASE_URL: 'http://127.0.0.1:5000',
+    BASE_URL: '',
     LOGIN: '/login',
     REGISTER: '/register'
   },
   PAPER_MARKING_SERVICE: {
-    BASE_URL: 'http://127.0.0.1:5001',
+    BASE_URL: '',
     CORRECT: '/correct'
   },
   PAPER_COMPOSITION_SERVICE: {
-    BASE_URL: 'http://127.0.0.1:5002',
+    BASE_URL: '',
     GENERATE_QUIZ: '/generate_quiz'
   },
   ACHIEVEMENT_ANALYSIS_SERVICE: {
-    BASE_URL: 'http://127.0.0.1:5003',
+    BASE_URL: '',
     ANALYZE: '/analyze'
   },
   CODE_CORRECTION_SERVICE: {
-    BASE_URL: 'http://127.0.0.1:5004',
+    BASE_URL: '',
     REVIEW_CODE: '/review_code',
     ENDPOINTS: {
       CHAT: '/api/mentor/chat',
@@ -28,7 +28,7 @@ const API_CONFIG = {
     }
   },
   PROMPT_ARENA_SERVICE: {
-    BASE_URL: 'http://127.0.0.1:5005',
+    BASE_URL: '',
     ENDPOINTS: {
       NEW_QUEST: '/api/prompt_arena/new_quest',
       SIMULATE: '/api/prompt_arena/simulate',
@@ -37,7 +37,7 @@ const API_CONFIG = {
     }
   },
   DIGITAL_HUMAN_SERVICE: {
-    BASE_URL: 'http://127.0.0.1:5007',
+    BASE_URL: '',
     ENDPOINTS: {
       SYNTHESIZE: '/api/synthesize',
       SYNTHESIZE_VIDEO: '/api/synthesize_video',
@@ -48,7 +48,7 @@ const API_CONFIG = {
     }
   },
   AI_TEACHING_SERVICE: {
-    BASE_URL: 'http://127.0.0.1:5008',
+    BASE_URL: '',
     ENDPOINTS: {
       HEALTH: '/api/ai-teaching/health',
       THEORY_CONTENT: '/api/ai-teaching/theory/content',
@@ -68,7 +68,7 @@ const API_CONFIG = {
     }
   },
   YOLO_TEACHING_SERVICE: {
-    BASE_URL: 'http://127.0.0.1:5009',
+    BASE_URL: '',
     ENDPOINTS: {
       HEALTH: '/api/yolo-teaching/health',
       DETECTION_VS_CLASSIFICATION: '/api/yolo-teaching/theory/detection-vs-classification',
@@ -90,7 +90,7 @@ const API_CONFIG = {
     }
   },
   API_MANAGEMENT_SERVICE: {
-    BASE_URL: 'http://127.0.0.1:5010',
+    BASE_URL: '',
     ENDPOINTS: {
       HEALTH: '/api/health',
       PROVIDERS: '/api/providers',
@@ -107,7 +107,7 @@ const API_CONFIG = {
     }
   },
   PRACTICE_SERVICE: {
-    BASE_URL: 'http://127.0.0.1:5011',
+    BASE_URL: '',
     ENDPOINTS: {
       HEALTH: '/health',
       GENERATE: '/api/practice/generate',

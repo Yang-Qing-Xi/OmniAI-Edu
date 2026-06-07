@@ -170,7 +170,7 @@
 <script>
 import axios from 'axios'
 
-const API_BASE = 'http://127.0.0.1:5011'
+const API_BASE = ''
 
 export default {
   name: 'PracticePage',

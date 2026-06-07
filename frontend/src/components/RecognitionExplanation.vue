@@ -223,7 +223,7 @@
 <script>
 import axios from 'axios'
 
-const API_BASE = 'http://localhost:5005'
+const API_BASE = ''
 
 export default {
   name: 'RecognitionExplanation',

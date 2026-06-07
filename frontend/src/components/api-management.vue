@@ -226,7 +226,7 @@
 <script>
 import axios from 'axios'
 
-const API_BASE = 'http://127.0.0.1:5010'
+const API_BASE = ''
 
 export default {
   name: 'ApiManagement',

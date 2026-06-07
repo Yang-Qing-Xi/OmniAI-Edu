@@ -370,7 +370,7 @@ export default {
     },
     async fetchHistory() {
       try {
-        const res = await fetch(`http://127.0.0.1:5011/api/practice/history?username=${this.currentUsername}&page=${this.historyPage}&page_size=${this.historyPageSize}`)
+        const res = await fetch(`/api/practice/history?username=${this.currentUsername}&page=${this.historyPage}&page_size=${this.historyPageSize}`)
         const data = await res.json()
         if (data.success && data.data && data.data.records) {
           this.historyList = data.data.records.map(r => ({
@@ -393,7 +393,7 @@ export default {
     },
     async fetchWrongQuestions() {
       try {
-        const res = await fetch(`http://127.0.0.1:5011/api/practice/wrong-questions?username=${this.currentUsername}`)
+        const res = await fetch(`/api/practice/wrong-questions?username=${this.currentUsername}`)
         const data = await res.json()
         if (data.success && data.data && data.data.questions) {
           this.wrongQuestions = data.data.questions.map(q => ({
@@ -429,7 +429,7 @@ export default {
     async submitRetry(id) {
       if (!this.retryAnswer.trim()) return
       try {
-        const res = await fetch(`http://127.0.0.1:5011/api/practice/wrong-questions/${id}/retry`, {
+        const res = await fetch(`/api/practice/wrong-questions/${id}/retry`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username: this.currentUsername, answer: this.retryAnswer })
@@ -448,7 +448,7 @@ export default {
     },
     async exportWrongQuestions() {
       try {
-        const res = await fetch('http://127.0.0.1:5011/api/practice/wrong-questions/export', {
+        const res = await fetch('/api/practice/wrong-questions/export', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username: this.currentUsername })
@@ -467,8 +467,8 @@ export default {
       this.radarLoading = true
       try {
         const [radarRes, statsRes] = await Promise.all([
-          fetch(`http://127.0.0.1:5011/api/practice/radar?username=${this.currentUsername}`),
-          fetch(`http://127.0.0.1:5011/api/practice/stats?username=${this.currentUsername}`)
+          fetch(`/api/practice/radar?username=${this.currentUsername}`),
+          fetch(`/api/practice/stats?username=${this.currentUsername}`)
         ])
         const radarJson = await radarRes.json()
         const statsJson = await statsRes.json()
@@ -591,7 +591,7 @@ export default {
     },
     async fetchLeaderboard() {
       try {
-        const res = await fetch(`http://127.0.0.1:5011/api/practice/leaderboard?username=${this.currentUsername}&type=${this.leaderboardType}`)
+        const res = await fetch(`/api/practice/leaderboard?username=${this.currentUsername}&type=${this.leaderboardType}`)
         const data = await res.json()
         if (data.success && data.data && data.data.entries) {
           const scoreField = this.leaderboardType === 'weekly' ? 'weekly_score' : 'total_score'

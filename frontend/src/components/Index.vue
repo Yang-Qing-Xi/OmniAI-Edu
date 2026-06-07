@@ -149,7 +149,7 @@
           <a 
             class="projectItem ai-course-item" 
             @click.prevent="navigateToOpenMAIC"
-            href="http://localhost:5006"
+            href="http://10.10.12.47:5006"
           >
             <img src="../../static/img/logo-openmaic.png" alt="OpenMAIC" class="ai-course-logo">
           </a>
@@ -239,7 +239,7 @@ import { useRouter } from 'vue-router'
 import { useUserStore } from '../store/user'
 import axios from 'axios'
 
-const API_BASE = 'http://127.0.0.1:5010'
+const API_BASE = ''
 
 export default {
   name: 'Index',
@@ -287,7 +287,7 @@ export default {
       }
     },
     navigateToOpenMAIC() {
-      const targetUrl = 'http://localhost:5006'
+      const targetUrl = 'http://10.10.12.47:5006'
       try {
         window.location.href = targetUrl
       } catch (error) {

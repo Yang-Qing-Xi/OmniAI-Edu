@@ -279,7 +279,7 @@ export default {
       }
 
       try {
-        const response = await axios.post('http://127.0.0.1:5011/api/practice/submit', body)
+        const response = await axios.post('/api/practice/submit', body)
         this.submitting = false
         const submitData = response.data
         if (submitData.success && submitData.data) {

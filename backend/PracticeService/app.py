@@ -42,12 +42,9 @@ memory_wrong_questions = []
 memory_user_stats = {}
 memory_leaderboard = []
 
-DASHSCOPE_API_KEY = os.environ.get('DASHSCOPE_API_KEY', '')
+DASHSCOPE_API_KEY = os.environ.get('DASHSCOPE_API_KEY', 'sk-e970b82e9c064d7f822ddc9e5618b13e')
 DASHSCOPE_BASE_URL = os.environ.get('DASHSCOPE_BASE_URL', 'https://dashscope.aliyuncs.com/compatible-mode/v1')
 MODEL_NAME = os.environ.get('ALI_MODEL_NAME', 'qwen-plus')
-
-if not DASHSCOPE_API_KEY:
-    print("⚠️ DASHSCOPE_API_KEY 未设置，AI功能将不可用")
 
 LANGCHAIN_AVAILABLE = False
 llm = None

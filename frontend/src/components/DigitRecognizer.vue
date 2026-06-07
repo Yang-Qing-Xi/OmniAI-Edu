@@ -155,7 +155,7 @@
 import axios from 'axios'
 import RecognitionExplanation from './RecognitionExplanation.vue'
 
-const API_BASE = 'http://localhost:5005'
+const API_BASE = ''
 
 export default {
   name: 'DigitRecognizer',

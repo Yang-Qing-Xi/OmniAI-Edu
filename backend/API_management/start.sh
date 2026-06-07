@@ -4,7 +4,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
-PYTHON="${PYTHON:-python3}"
+PYTHON="/home/ubuntu/anaconda3/envs/TAA/bin/python"
 API_MGMT_SCRIPT="$SCRIPT_DIR/app.py"
 API_MGMT_PORT=5010
 FRONTEND_DIR="$PROJECT_DIR/frontend"

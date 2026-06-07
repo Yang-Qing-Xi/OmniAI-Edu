@@ -4,14 +4,11 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   server: {
+    host: '0.0.0.0',
     port: 3000,
     open: true,
     proxy: {
-      '/api': {
-        target: 'http://127.0.0.1:5000',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      },
+      // 登录服务 (5000)
       '/login': {
         target: 'http://127.0.0.1:5000',
         changeOrigin: true
@@ -20,15 +17,52 @@ export default defineConfig({
         target: 'http://127.0.0.1:5000',
         changeOrigin: true
       },
-      '/practice-api': {
-        target: 'http://127.0.0.1:5011',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/practice-api/, '')
+      '/health': {
+        target: 'http://127.0.0.1:5000',
+        changeOrigin: true
       },
-      '/agent-api': {
+      // API管理服务 (5010)
+      '/api/theme': {
+        target: 'http://127.0.0.1:5010',
+        changeOrigin: true
+      },
+      '/api/providers': {
+        target: 'http://127.0.0.1:5010',
+        changeOrigin: true
+      },
+      '/api/config': {
+        target: 'http://127.0.0.1:5010',
+        changeOrigin: true
+      },
+      '/api/health': {
+        target: 'http://127.0.0.1:5010',
+        changeOrigin: true
+      },
+      '/api/test-connection': {
+        target: 'http://127.0.0.1:5010',
+        changeOrigin: true
+      },
+      '/api/check-model': {
+        target: 'http://127.0.0.1:5010',
+        changeOrigin: true
+      },
+      '/api/openmaic': {
+        target: 'http://127.0.0.1:5010',
+        changeOrigin: true
+      },
+      // 手写数字识别服务 (5005)
+      '/api/digit': {
+        target: 'http://127.0.0.1:5005',
+        changeOrigin: true
+      },
+      // 练习反馈服务 (5011)
+      '/api/practice': {
         target: 'http://127.0.0.1:5011',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/agent-api/, '')
+        changeOrigin: true
+      },
+      '/api/agent': {
+        target: 'http://127.0.0.1:5011',
+        changeOrigin: true
       }
     }
   },

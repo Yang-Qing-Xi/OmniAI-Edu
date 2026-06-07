@@ -1,0 +1,18 @@
+INFO:__main__:推理设备: cuda
+INFO:__main__:GPU: NVIDIA GeForce RTX 3090
+INFO:__main__:GPU显存: 23.7 GB
+INFO:__main__:模型加载成功 - 准确率: 99.56%, Epoch: 10
+INFO:__main__:GPU缓存已清理
+ * Serving Flask app 'app'
+ * Debug mode: off
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://10.10.12.47:5005
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jun/2026 21:06:14] "GET /api/digit/status HTTP/1.1" 200 -
+INFO:__main__:预处理图像统计 - 原始像素: min=0.000, max=1.000, mean=0.100, nonzero=151/784
+INFO:__main__:预处理图像统计 - 归一化后: min=-0.424, max=2.821, mean=-0.100
+INFO:__main__:识别结果: 9 (置信度: 99.8%, 推理耗时: 200.1ms, 设备: cuda)
+INFO:werkzeug:127.0.0.1 - - [03/Jun/2026 21:06:21] "POST /api/digit/recognize HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jun/2026 21:06:28] "POST /api/digit/explain HTTP/1.1" 200 -
