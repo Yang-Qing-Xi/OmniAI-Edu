@@ -192,7 +192,7 @@ function HomePage() {
           className="w-[356px] rounded-xl border border-amber-200/60 dark:border-amber-800/40 bg-gradient-to-r from-amber-50 via-white to-amber-50 dark:from-amber-950/60 dark:via-slate-900 dark:to-amber-950/60 shadow-lg shadow-amber-500/8 dark:shadow-amber-900/20 p-4 flex items-start gap-3 cursor-pointer"
           onClick={() => {
             toast.dismiss(id);
-            window.open('http://localhost:3000/api-management', '_blank');
+            window.open('http://10.10.12.47:3000/api-management', '_blank');
           }}
         >
           <div className="shrink-0 mt-0.5 size-9 rounded-lg bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center ring-1 ring-amber-200/50 dark:ring-amber-800/30">
@@ -223,7 +223,7 @@ function HomePage() {
         t('settings.modelNotConfigured'),
         t('settings.setupNeeded'),
       );
-      window.open('http://localhost:3000/api-management', '_blank');
+      window.open('http://10.10.12.47:3000/api-management', '_blank');
       return;
     }
 
@@ -316,7 +316,7 @@ function HomePage() {
         {/* Back to Home Button */}
         <button
           onClick={() => {
-            window.location.href = window.location.port === '5006' ? 'http://localhost:5173' : '/';
+            window.location.href = window.location.port === '5006' ? 'http://10.10.12.47:3000' : '/';
           }}
           className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold text-gray-500 dark:text-gray-400 hover:bg-white dark:hover:bg-gray-700 hover:text-gray-800 dark:hover:text-gray-200 hover:shadow-sm transition-all"
           title="返回首页"
@@ -454,7 +454,7 @@ function HomePage() {
                   webSearch={form.webSearch}
                   onWebSearchChange={(v) => updateForm('webSearch', v)}
                   onSettingsOpen={() => {
-                    window.open('http://localhost:3000/api-management', '_blank');
+                    window.open('http://10.10.12.47:3000/api-management', '_blank');
                   }}
                   pdfFile={form.pdfFile}
                   onPdfFileChange={(f) => updateForm('pdfFile', f)}

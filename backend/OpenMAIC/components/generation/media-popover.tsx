@@ -432,7 +432,7 @@ export function MediaPopover({ onSettingsOpen }: MediaPopoverProps) {
         {/* ── Footer ── */}
         <div className="border-t border-border/40">
           <a
-            href="http://localhost:3000/api-management"
+            href="http://10.10.12.47:3000/api-management"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => {

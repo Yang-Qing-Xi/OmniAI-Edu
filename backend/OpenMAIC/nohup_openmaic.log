@@ -1,0 +1,79 @@
+nohup: 忽略输入
+
+> openmaic@0.2.1 dev /home/ubuntu/OmniAI Edu/backend/OpenMAIC
+> next dev -p 5006 -H 0.0.0.0
+
+▲ Next.js 16.1.2 (Turbopack)
+- Local:         http://localhost:5006
+- Network:       http://0.0.0.0:5006
+- Experiments (use with caution):
+  · proxyClientMaxBodySize: "200mb"
+
+✓ Starting...
+✓ Ready in 589ms
+⚠ Cross origin request detected from 10.10.12.47 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ GET / 200 in 1554ms (compile: 876ms, render: 679ms)
+ GET / 200 in 151ms (compile: 4ms, render: 147ms)
+ GET / 200 in 154ms (compile: 52ms, render: 102ms)
+[2026-06-07T01:17:27.201Z] [INFO] [ServerProviderConfig] [ServerProviderConfig] Loaded (unified-api-mgmt): 1 LLM, 1 TTS, 1 ASR, 0 PDF, 1 Image, 0 Video, 0 WebSearch providers
+ GET /api/server-providers 200 in 86ms (compile: 61ms, render: 25ms)
+[2026-06-07T01:17:27.589Z] [INFO] [ServerProviderConfig] [ServerProviderConfig] Loaded (unified-api-mgmt): 1 LLM, 1 TTS, 1 ASR, 0 PDF, 1 Image, 0 Video, 0 WebSearch providers
+ GET /api/server-providers 200 in 4ms (compile: 1582µs, render: 3ms)
+[2026-06-07T01:17:27.646Z] [INFO] [ServerProviderConfig] [ServerProviderConfig] Loaded (unified-api-mgmt): 1 LLM, 1 TTS, 1 ASR, 0 PDF, 1 Image, 0 Video, 0 WebSearch providers
+ GET /api/server-providers 200 in 7ms (compile: 2ms, render: 5ms)
+ GET / 200 in 56ms (compile: 5ms, render: 51ms)
+[2026-06-07T01:18:28.689Z] [INFO] [ServerProviderConfig] [ServerProviderConfig] Loaded (unified-api-mgmt): 1 LLM, 1 TTS, 1 ASR, 0 PDF, 1 Image, 0 Video, 0 WebSearch providers
+ GET /api/server-providers 200 in 12ms (compile: 2ms, render: 9ms)
+ GET / 200 in 56ms (compile: 3ms, render: 53ms)
+[2026-06-07T01:19:08.031Z] [INFO] [ServerProviderConfig] [ServerProviderConfig] Loaded (unified-api-mgmt): 1 LLM, 1 TTS, 1 ASR, 0 PDF, 1 Image, 0 Video, 0 WebSearch providers
+ GET /api/server-providers 200 in 8ms (compile: 1671µs, render: 7ms)
+○ Compiling /generation-preview ...
+ GET /generation-preview 200 in 4.9s (compile: 4.9s, render: 26ms)
+[2026-06-07T01:19:19.841Z] [INFO] [ServerProviderConfig] [ServerProviderConfig] Loaded (background-refresh): 1 LLM, 1 TTS, 1 ASR, 0 PDF, 1 Image, 0 Video, 0 WebSearch providers
+[2026-06-07T01:19:19.841Z] [INFO] [Agent Profiles API] Generating agent profiles for "简单介绍一下深度学习" [model=qwen:qwen-plus]
+ POST /api/generate/agent-profiles 200 in 7.6s (compile: 1910ms, render: 5.7s)
+[2026-06-07T01:19:26.374Z] [INFO] [Outlines Stream] Generating outlines: "简单介绍一下深度学习" [model=qwen:qwen-plus]
+[2026-06-07T01:19:29.726Z] [INFO] [Agent Profiles API] Successfully generated 4 agent profiles for "简单介绍一下深度学习"
+✓ Finished filesystem cache database compaction in 12.6s
+ POST /api/generate/scene-outlines-stream 200 in 21.0s (compile: 880ms, render: 20.1s)
+[2026-06-07T01:19:47.473Z] [INFO] [Scene Content API] Generating content: "什么是深度学习？" (slide) [model=qwen:qwen-plus]
+[2026-06-07T01:20:03.775Z] [INFO] [Scene Content API] Content generated successfully: "什么是深度学习？"
+ POST /api/generate/scene-content 200 in 16.5s (compile: 205ms, render: 16.3s)
+[2026-06-07T01:20:03.984Z] [INFO] [Scene Actions API] Generating actions: "什么是深度学习？" (slide) [model=qwen:qwen-plus]
+[2026-06-07T01:20:17.778Z] [INFO] [Scene Actions API] Generated 10 actions for: "什么是深度学习？"
+[2026-06-07T01:20:17.778Z] [INFO] [Scene Actions API] Scene assembled successfully: "什么是深度学习？" — 10 actions
+ POST /api/generate/scene-actions 200 in 14.0s (compile: 202ms, render: 13.8s)
+[2026-06-07T01:20:18.015Z] [INFO] [TTS API] Generating TTS: provider=qwen-tts, voice=Cherry, audioId=tts_action_Aeruwfbe, textLen=86
+ POST /api/generate/tts 200 in 3.5s (compile: 231ms, render: 3.3s)
+[2026-06-07T01:20:21.662Z] [INFO] [TTS API] Generating TTS: provider=qwen-tts, voice=Cherry, audioId=tts_action_WfztZSGh, textLen=67
+ POST /api/generate/tts 200 in 2.9s (compile: 1675µs, render: 2.9s)
+[2026-06-07T01:20:25.184Z] [INFO] [TTS API] Generating TTS: provider=qwen-tts, voice=Cherry, audioId=tts_action_4M6tYcyj, textLen=66
+ POST /api/generate/tts 200 in 2.7s (compile: 1061µs, render: 2.7s)
+[2026-06-07T01:20:27.973Z] [INFO] [TTS API] Generating TTS: provider=qwen-tts, voice=Cherry, audioId=tts_action_qqgIyg-h, textLen=105
+ POST /api/generate/tts 200 in 4.3s (compile: 1493µs, render: 4.3s)
+[2026-06-07T01:20:32.308Z] [INFO] [TTS API] Generating TTS: provider=qwen-tts, voice=Cherry, audioId=tts_action_H8lRFyMB, textLen=107
+ POST /api/generate/tts 200 in 4.4s (compile: 1396µs, render: 4.4s)
+○ Compiling /classroom/[id] ...
+ GET /classroom/97409_MPLJ 200 in 4.6s (compile: 4.5s, render: 30ms)
+[2026-06-07T01:20:42.063Z] [INFO] [Scene Content API] Generating content: "从感知机到深度神经网络" (slide) [model=qwen:qwen-plus]
+[2026-06-07T01:21:05.697Z] [INFO] [Scene Content API] Content generated successfully: "从感知机到深度神经网络"
+ POST /api/generate/scene-content 200 in 23.6s (compile: 2ms, render: 23.6s)
+[2026-06-07T01:21:05.705Z] [INFO] [Scene Actions API] Generating actions: "从感知机到深度神经网络" (slide) [model=qwen:qwen-plus]
+[2026-06-07T01:21:19.483Z] [INFO] [Scene Actions API] Generated 10 actions for: "从感知机到深度神经网络"
+[2026-06-07T01:21:19.483Z] [INFO] [Scene Actions API] Scene assembled successfully: "从感知机到深度神经网络" — 10 actions
+ POST /api/generate/scene-actions 200 in 13.8s (compile: 2ms, render: 13.8s)
+[2026-06-07T01:21:19.490Z] [INFO] [TTS API] Generating TTS: provider=qwen-tts, voice=Cherry, audioId=tts_s2_action_dk9Ow-Fv, textLen=226
+ POST /api/generate/tts 200 in 3.5s (compile: 1813µs, render: 3.5s)
+[2026-06-07T01:21:23.148Z] [INFO] [TTS API] Generating TTS: provider=qwen-tts, voice=Cherry, audioId=tts_s2_action_2t85ecvd, textLen=228
+ POST /api/generate/tts 200 in 3.5s (compile: 1711µs, render: 3.5s)
+[2026-06-07T01:21:26.741Z] [INFO] [TTS API] Generating TTS: provider=qwen-tts, voice=Cherry, audioId=tts_s2_action_MeoIaP8E, textLen=285
+ POST /api/generate/tts 200 in 4.6s (compile: 1981µs, render: 4.6s)
+[2026-06-07T01:21:31.473Z] [INFO] [TTS API] Generating TTS: provider=qwen-tts, voice=Cherry, audioId=tts_s2_action_To73_ZT6, textLen=379
+ POST /api/generate/tts 200 in 5.9s (compile: 1591µs, render: 5.8s)
+[2026-06-07T01:21:37.570Z] [INFO] [TTS API] Generating TTS: provider=qwen-tts, voice=Cherry, audioId=tts_s2_action_UFLMkLHl, textLen=295
+ POST /api/generate/tts 200 in 5.6s (compile: 1390µs, render: 5.6s)
+[2026-06-07T01:21:43.291Z] [INFO] [Scene Content API] Generating content: "动手看‘神经元’如何工作" (interactive) [model=qwen:qwen-plus]
+[2026-06-07T01:21:43.293Z] [INFO] [Generation] Generating simulation widget for: 动手看‘神经元’如何工作
+ GET / 200 in 17ms (compile: 2ms, render: 15ms)
+ POST /api/generate/scene-content 200 in 20.1s (compile: 1655µs, render: 20.1s)

@@ -43,7 +43,21 @@ async function fetchApiMgmtProviders() {
           };
         }
       }
-      useSettingsStore.setState({ providersConfig: newProvidersConfig as typeof store.providersConfig });
+
+      // Auto-select first available model if none is configured
+      let updates: Record<string, any> = { providersConfig: newProvidersConfig as typeof store.providersConfig };
+      if (!store.modelId) {
+        for (const [pid, info] of Object.entries(data.providers) as [string, any][]) {
+          const models = info.models as string[] | undefined;
+          if (models && models.length > 0 && newProvidersConfig[pid]) {
+            updates.providerId = pid as typeof store.providerId;
+            updates.modelId = models[0];
+            break;
+          }
+        }
+      }
+
+      useSettingsStore.setState(updates);
     }
   } catch {
     // API management service not available, silently skip

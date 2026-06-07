@@ -675,7 +675,7 @@ export function SettingsDialog({ open, onOpenChange, initialSection }: SettingsD
           <span className="text-sm text-purple-200 flex-1">
             API 配置已迁移至师小助统一管理系统，请前往
             <a
-              href="http://localhost:3000/api-management"
+              href="http://10.10.12.47:3000/api-management"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 mx-1 px-2 py-0.5 bg-purple-500/30 hover:bg-purple-500/50 rounded text-purple-100 font-medium transition-colors"
