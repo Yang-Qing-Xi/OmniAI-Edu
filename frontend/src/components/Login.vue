@@ -66,6 +66,10 @@
         </span>
       </div>
 
+      <div class="toggle-mode">
+        <router-link to="/auth">手机号 / 微信 / QQ / 邮箱 注册登录 · 找回密码</router-link>
+      </div>
+
       <div class="login-footer">
         <p>教师助手系统 © 2026</p>
       </div>
@@ -78,12 +82,9 @@ import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '../store/user'
 import axios from 'axios'
-import { getServiceUrl } from '../config/api'
 
 const router = useRouter()
 const userStore = useUserStore()
-
-const LOGIN_BASE_URL = ''
 
 const isLoginMode = ref(true)
 const isLoading = ref(false)
@@ -115,14 +116,17 @@ const handleSubmit = async () => {
 
   isLoading.value = true
 
-  const formData = new FormData()
-  formData.append('username', form.username)
-  formData.append('password', form.password)
-
-  const url = isLoginMode.value ? `${LOGIN_BASE_URL}/login` : `${LOGIN_BASE_URL}/register`
+  const url = isLoginMode.value ? '/login' : '/register'
 
   try {
-    const response = await axios.post(url, formData)
+    const response = await axios.post(url, {
+      username: form.username,
+      password: form.password
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     
     if (response.data.success) {
       if (isLoginMode.value) {
@@ -136,6 +140,8 @@ const handleSubmit = async () => {
           form.password = ''
         }, 1000)
       }
+    } else {
+      errorMessage.value = response.data.message || '操作失败'
     }
   } catch (error) {
     console.error('请求失败:', error)
@@ -151,14 +157,12 @@ const handleSubmit = async () => {
 </script>
 
 <style scoped>
-/* 保持原有样式，新增部分辅助样式 */
 .login-container {
   height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* 使用你的背景图 */
   background-image: url('../../assets/background.jpg'); 
   background-size: cover;
   background-position: center;
@@ -245,7 +249,7 @@ const handleSubmit = async () => {
 .form-group input:focus {
   outline: none;
   border-color: #42b983;
-  box-shadow: 0 0 0 3px rgba(66, 185, 131, 0.1);
+  box-shadow: 0 0 0 3px rgba(66, 185, 139, 0.1);
 }
 
 .error-message {

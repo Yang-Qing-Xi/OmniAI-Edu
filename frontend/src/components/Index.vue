@@ -81,6 +81,12 @@
             </svg>
             API管理
           </router-link>
+          <router-link to="/discussion" class="api-mgmt-btn" title="讨论区">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            </svg>
+            讨论区
+          </router-link>
           <button class="logout-btn" @click="handleLogout" title="退出登录">
             <svg viewBox="0 0 1024 1024" width="16" height="16">
               <circle cx="512" cy="512" r="450" fill="currentColor"/>

@@ -12,6 +12,9 @@ import PracticePage from '../components/PracticePage.vue'
 import QuizPage from '../components/QuizPage.vue'
 import QuizReport from '../components/QuizReport.vue'
 import FeedbackPage from '../components/FeedbackPage.vue'
+import Discussion from '../components/Discussion.vue'
+import RegisterLogin from '../components/RegisterLogin.vue'
+
 
 const routes = [
   {
@@ -78,6 +81,17 @@ const routes = [
     name: 'FeedbackPage',
     component: FeedbackPage,
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/discussion',
+    name: 'Discussion',
+    component: Discussion,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/auth',
+    name: 'Auth',
+    component: RegisterLogin
   },
   {
     path: '/:pathMatch(.*)*',
