@@ -73,6 +73,11 @@ export default defineConfig({
       '/api/discussions': {
         target: 'http://127.0.0.1:5020',
         changeOrigin: true
+      },
+      // 社交服务：个人主页/关注/私信 (5022)
+      '/api/social': {
+        target: 'http://127.0.0.1:5022',
+        changeOrigin: true
       }
     }
   },

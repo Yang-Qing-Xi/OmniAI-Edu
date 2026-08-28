@@ -13,6 +13,10 @@
       <div v-if="showPostForm" class="glass-card post-form">
         <input v-model="newPost.title" class="glass-input" placeholder="帖子标题" />
         <textarea v-model="newPost.content" class="glass-input" placeholder="写下你想分享的内容..."></textarea>
+        <label class="privacy-toggle">
+          <input type="checkbox" v-model="newPost.is_private" />
+          🔒 设为私密（仅自己可见，发布后可在个人主页管理）
+        </label>
         <div class="form-actions">
           <button class="btn-primary" @click="submitPost">发布</button>
           <button class="btn-ghost" @click="showPostForm = false">取消</button>
@@ -30,12 +34,20 @@
         </div>
         <p class="post-content">{{ post.content.substring(0, 120) }}{{ post.content.length > 120 ? '...' : '' }}</p>
         <div class="post-meta">
-          <span class="meta-author">
+          <span class="meta-author link-author" @click.stop="goProfile(post.username)" title="查看TA的主页">
             <span class="avatar-dot">{{ (post.username || '匿名').charAt(0) }}</span>
             {{ post.username }}
           </span>
+          <span v-if="post.is_private" class="meta-private">🔒 私密</span>
           <span class="meta-time">{{ formatTime(post.created_at) }}</span>
-          <span class="meta-btn like-btn" @click.stop="likePost(post)">👍 {{ post.likes || 0 }}</span>
+          <span
+            class="meta-btn like-btn"
+            :class="{ active: post.is_liked }"
+            @click.stop="toggleLike(post)"
+            :title="post.is_liked ? '取消点赞' : '点赞'"
+          >
+            <span class="icon-heart">{{ post.is_liked ? '♥' : '♡' }}</span> {{ post.likes || 0 }}
+          </span>
           <span class="meta-static">💬 {{ post.reply_count || 0 }}</span>
           <span class="meta-static">👁️ {{ post.views || 0 }}</span>
           <span
@@ -58,36 +70,92 @@
         <div class="glass-card modal-content">
           <h2 class="modal-title">{{ selectedPost.title }}</h2>
           <div class="post-info">
-            <span class="meta-author">
+            <span class="meta-author link-author" @click="goProfile(selectedPost.username)" title="查看TA的主页">
               <span class="avatar-dot">{{ (selectedPost.username || '匿名').charAt(0) }}</span>
               {{ selectedPost.username }}
             </span>
+            <span v-if="selectedPost.is_private" class="meta-private">🔒 私密</span>
             <span class="meta-time">{{ formatTime(selectedPost.created_at) }}</span>
             <span class="meta-static">👁️ {{ selectedPost.views || 0 }} 次浏览</span>
+            <span
+              v-if="!isOwnPost(selectedPost)"
+              class="meta-btn dm-btn"
+              @click="goChat(selectedPost.username)"
+              title="私信TA"
+            >✉️ 私信</span>
           </div>
           <p class="post-body">{{ selectedPost.content }}</p>
 
+          <div class="action-bar">
+            <span
+              class="meta-btn like-btn"
+              :class="{ active: selectedPost.is_liked }"
+              @click="toggleLike(selectedPost)"
+            >
+              <span class="icon-heart">{{ selectedPost.is_liked ? '♥' : '♡' }}</span> 点赞 {{ selectedPost.likes || 0 }}
+            </span>
+            <span
+              class="meta-btn fav-btn"
+              :class="{ active: selectedPost.is_favorited }"
+              @click="toggleFavorite(selectedPost)"
+            >
+              <span class="icon-star">{{ selectedPost.is_favorited ? '★' : '☆' }}</span>
+              {{ selectedPost.is_favorited ? '已收藏' : '收藏' }}
+            </span>
+            <span class="meta-btn share-btn" @click="sharePost(selectedPost)">
+              🔗 分享 ({{ selectedPost.shares || 0 }})
+            </span>
+          </div>
+
           <div class="replies-section">
-            <h4 class="replies-title">回复 ({{ selectedPost.replies?.length || 0 }})</h4>
+            <h4 class="replies-title">回复 ({{ countReplies(selectedPost.replies) }})</h4>
             <div v-if="selectedPost.replies?.length" class="replies-list">
-              <div v-for="reply in selectedPost.replies" :key="reply._id" class="reply-item">
-                <div class="reply-header">
-                  <span class="avatar-dot sm">{{ (reply.username || '匿名').charAt(0) }}</span>
-                  <strong>{{ reply.username }}</strong>
-                  <small>{{ formatTime(reply.created_at) }}</small>
-                </div>
-                <p class="reply-text">{{ reply.content }}</p>
-              </div>
+              <reply-node
+                v-for="reply in selectedPost.replies"
+                :key="reply._id"
+                :reply="reply"
+                :depth="0"
+                :current-user-id="currentUserId"
+                :current-username="currentUsername"
+                @reply="onReplyClick"
+                @like="toggleLike"
+                @favorite="toggleFavorite"
+                @share="sharePost"
+                @delete-reply="deleteReply"
+              />
             </div>
             <div v-else class="no-replies">暂无回复，来抢沙发吧</div>
           </div>
 
           <div class="reply-input">
-            <textarea v-model="replyContent" class="glass-input" placeholder="写下你的回复..."></textarea>
-            <button class="btn-primary reply-btn" @click="submitReply(selectedPost._id)">回复</button>
+            <textarea
+              v-model="replyContent"
+              class="glass-input"
+              placeholder="写下你的回复..."
+            ></textarea>
+            <button class="btn-primary reply-btn" @click="submitReply(selectedPost._id, selectedPost._id)">回复</button>
           </div>
 
           <button class="btn-ghost close-btn" @click="closeDetail">关闭</button>
+        </div>
+      </div>
+    </transition>
+
+    <!-- 嵌套回复输入弹窗 -->
+    <transition name="modal-fade">
+      <div v-if="replyTarget" class="modal-overlay" @click.self="replyTarget = null">
+        <div class="glass-card modal-content" style="max-width: 480px;">
+          <h3 class="modal-title" style="font-size: 18px;">回复 @{{ replyTarget.username }}</h3>
+          <textarea
+            v-model="replyTargetContent"
+            class="glass-input"
+            placeholder="写下你的回复..."
+            style="height: 100px;"
+          ></textarea>
+          <div class="form-actions" style="margin-top: 14px;">
+            <button class="btn-ghost" @click="replyTarget = null">取消</button>
+            <button class="btn-primary" @click="submitNestedReply">发送</button>
+          </div>
         </div>
       </div>
     </transition>
@@ -96,10 +164,12 @@
 
 <script>
 import { useUserStore } from '../store/user'
+import ReplyNode from './ReplyNode.vue'
 
 const API_BASE = '/api/discussions'
 
 export default {
+  components: { ReplyNode },
   data() {
     return {
       posts: [],
@@ -107,9 +177,11 @@ export default {
       pages: 1,
       loading: false,
       showPostForm: false,
-      newPost: { title: '', content: '' },
+      newPost: { title: '', content: '', is_private: false },
       selectedPost: null,
-      replyContent: ''
+      replyContent: '',
+      replyTarget: null,
+      replyTargetContent: ''
     }
   },
   computed: {
@@ -125,15 +197,47 @@ export default {
   },
   mounted() {
     this.fetchPosts()
+    // 如果从个人主页跳转过来（带 ?post=ID），自动打开该帖详情
+    const postId = this.$route.query.post
+    if (postId) {
+      this.viewPost(String(postId))
+      // 清掉 query，避免分享/刷新重复弹窗
+      this.$router.replace({ path: '/discussion' })
+    }
+  },
+  watch: {
+    // 支持路由参数化跳转（如 PostsList 里点哪条直接定位）
+    '$route.query.post'(val) {
+      if (val) this.viewPost(String(val))
+    }
   },
   methods: {
     isOwnPost(post) {
       return this.currentUserId && String(post.user_id || '') === String(this.currentUserId)
     },
+    goProfile(username) {
+      if (!username) return
+      this.selectedPost = null
+      this.$router.push(`/profile/${encodeURIComponent(username)}`)
+    },
+    goChat(username) {
+      if (!username) return
+      if (username === this.currentUsername) return alert('不能给自己发私信')
+      this.selectedPost = null
+      this.$router.push(`/messages/${encodeURIComponent(username)}`)
+    },
+    countReplies(replies) {
+      if (!replies) return 0
+      let count = replies.length
+      replies.forEach(r => {
+        if (r.replies?.length) count += this.countReplies(r.replies)
+      })
+      return count
+    },
     async fetchPosts() {
       this.loading = true
       try {
-        const res = await fetch(`${API_BASE}?page=${this.page}&limit=10`)
+        const res = await fetch(`${API_BASE}?page=${this.page}&limit=10&user_id=${encodeURIComponent(this.currentUserId)}`)
         const data = await res.json()
         if (data.code === 200) {
           this.posts = data.data.posts
@@ -164,7 +268,7 @@ export default {
         const data = await res.json()
         if (data.code === 200) {
           this.showPostForm = false
-          this.newPost = { title: '', content: '' }
+          this.newPost = { title: '', content: '', is_private: false }
           this.fetchPosts()
         } else {
           alert(data.message)
@@ -175,7 +279,7 @@ export default {
     },
     async viewPost(id) {
       try {
-        const res = await fetch(`${API_BASE}/${id}`)
+        const res = await fetch(`${API_BASE}/${id}?user_id=${encodeURIComponent(this.currentUserId)}`)
         const data = await res.json()
         if (data.code === 200) {
           this.selectedPost = data.data
@@ -189,15 +293,57 @@ export default {
       this.replyContent = ''
       this.fetchPosts()
     },
-    async likePost(post) {
+    async toggleLike(post) {
+      if (!this.currentUserId) return alert('请先登录')
       try {
-        const res = await fetch(`${API_BASE}/${post._id}/like`, { method: 'POST' })
+        const res = await fetch(`${API_BASE}/${post._id}/like`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id: this.currentUserId })
+        })
         const data = await res.json()
         if (data.code === 200) {
           post.likes = data.likes
+          post.is_liked = data.is_liked
         }
       } catch (e) {
         console.error('点赞失败:', e)
+      }
+    },
+    async toggleFavorite(post) {
+      if (!this.currentUserId) return alert('请先登录')
+      try {
+        const res = await fetch(`${API_BASE}/${post._id}/favorite`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id: this.currentUserId })
+        })
+        const data = await res.json()
+        if (data.code === 200) {
+          post.is_favorited = data.is_favorited
+          post.favorites = data.favorites
+        }
+      } catch (e) {
+        console.error('收藏失败:', e)
+      }
+    },
+    async sharePost(post) {
+      try {
+        const res = await fetch(`${API_BASE}/${post._id}/share`, { method: 'POST' })
+        const data = await res.json()
+        if (data.code === 200) {
+          post.shares = data.shares
+        }
+        // 复制链接到剪贴板
+        const url = `${window.location.origin}/discussion#post-${post._id}`
+        try {
+          await navigator.clipboard.writeText(url)
+          alert('链接已复制到剪贴板')
+        } catch (e) {
+          prompt('请手动复制分享链接:', url)
+        }
+      } catch (e) {
+        console.error('分享失败:', e)
       }
     },
     async deletePost(post) {
@@ -218,7 +364,7 @@ export default {
         alert('删除失败')
       }
     },
-    async submitReply(postId) {
+    async submitReply(postId, replyToId) {
       if (!this.replyContent.trim()) return alert('请输入回复内容')
       try {
         const res = await fetch(`${API_BASE}/${postId}/reply`, {
@@ -227,7 +373,8 @@ export default {
           body: JSON.stringify({
             content: this.replyContent,
             user_id: this.currentUserId,
-            username: this.currentUsername
+            username: this.currentUsername,
+            reply_to_id: replyToId
           })
         })
         const data = await res.json()
@@ -239,6 +386,55 @@ export default {
         }
       } catch (e) {
         alert('回复失败')
+      }
+    },
+    onReplyClick({ postId, target }) {
+      this.replyTarget = { postId, ...target }
+      this.replyTargetContent = ''
+    },
+    async submitNestedReply() {
+      if (!this.replyTargetContent.trim()) return alert('请输入回复内容')
+      const { postId, _id, username } = this.replyTarget
+      try {
+        const res = await fetch(`${API_BASE}/${postId}/reply`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            content: this.replyTargetContent,
+            user_id: this.currentUserId,
+            username: this.currentUsername,
+            reply_to_id: _id
+          })
+        })
+        const data = await res.json()
+        if (data.code === 200) {
+          this.replyTarget = null
+          this.replyTargetContent = ''
+          this.viewPost(postId)
+        } else {
+          alert(data.message)
+        }
+      } catch (e) {
+        alert('回复失败')
+      }
+    },
+    async deleteReply(reply) {
+      if (!confirm('确定要删除这条回复吗？')) return
+      try {
+        const res = await fetch(`${API_BASE}/${reply._id}`, {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id: this.currentUserId })
+        })
+        const data = await res.json()
+        if (data.code === 200) {
+          this.viewPost(this.selectedPost._id)
+          this.fetchPosts()
+        } else {
+          alert(data.message)
+        }
+      } catch (e) {
+        alert('删除失败')
       }
     },
     formatTime(t) {
@@ -430,6 +626,42 @@ export default {
   color: var(--item_left_title_color, rgba(255, 255, 255, 0.85));
   font-weight: 500;
 }
+.link-author {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.link-author:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}
+.meta-private {
+  font-size: 12px;
+  color: #f0a020;
+  background: rgba(240, 160, 32, 0.12);
+  border: 1px solid rgba(240, 160, 32, 0.35);
+  border-radius: 10px;
+  padding: 1px 8px;
+}
+.dm-btn {
+  color: #5b8def !important;
+  font-weight: 600;
+}
+.privacy-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 12px;
+}
+.privacy-toggle input {
+  accent-color: #5b8def;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
 .avatar-dot {
   display: inline-flex;
   align-items: center;
@@ -455,10 +687,25 @@ export default {
   cursor: pointer;
   user-select: none;
   transition: color 0.2s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 .meta-btn:hover {
   color: #a29bfe;
-  transform: scale(1.08);
+  transform: scale(1.05);
+}
+.like-btn.active {
+  color: #ff6b9d;
+}
+.fav-btn.active {
+  color: #ffd93d;
+}
+.icon-heart {
+  font-size: 16px;
+}
+.icon-star {
+  font-size: 16px;
 }
 .meta-static {
   opacity: 0.7;
@@ -519,7 +766,7 @@ export default {
 }
 .modal-content {
   padding: 32px;
-  max-width: 640px;
+  max-width: 720px;
   width: 100%;
   max-height: 85vh;
   overflow-y: auto;
@@ -545,13 +792,33 @@ export default {
   white-space: pre-wrap;
   color: var(--item_left_text_color, rgba(255, 255, 255, 0.85));
   font-size: 15px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+}
+
+/* ===== 操作栏 ===== */
+.action-bar {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.action-bar .meta-btn {
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.action-bar .meta-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* ===== 回复区 ===== */
 .replies-section {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 20px;
+  padding-top: 12px;
 }
 .replies-title {
   font-size: 15px;
@@ -564,33 +831,6 @@ export default {
   flex-direction: column;
   gap: 10px;
   margin-bottom: 18px;
-}
-.reply-item {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 10px;
-  padding: 12px 14px;
-}
-.reply-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-.reply-header strong {
-  color: var(--item_left_title_color, rgba(255, 255, 255, 0.9));
-  font-size: 13px;
-}
-.reply-header small {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 12px;
-  margin-left: auto;
-}
-.reply-text {
-  margin: 0;
-  color: var(--item_left_text_color, rgba(255, 255, 255, 0.75));
-  font-size: 14px;
-  line-height: 1.6;
 }
 .no-replies {
   color: rgba(255, 255, 255, 0.35);

@@ -14,6 +14,8 @@ import QuizReport from '../components/QuizReport.vue'
 import FeedbackPage from '../components/FeedbackPage.vue'
 import Discussion from '../components/Discussion.vue'
 import RegisterLogin from '../components/RegisterLogin.vue'
+import ProfilePage from '../components/ProfilePage.vue'
+import Messages from '../components/Messages.vue'
 
 
 const routes = [
@@ -92,6 +94,24 @@ const routes = [
     path: '/auth',
     name: 'Auth',
     component: RegisterLogin
+  },
+  {
+    path: '/profile/:username',
+    name: 'Profile',
+    component: ProfilePage,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/messages',
+    name: 'Messages',
+    component: Messages,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/messages/:username',
+    name: 'Chat',
+    component: Messages,
+    meta: { requiresAuth: true }
   },
   {
     path: '/:pathMatch(.*)*',

@@ -117,6 +117,14 @@ class ServiceLauncher:
             port=5021,
             startup_command=[sys.executable, _get_service_path.__func__("AuthMulti", "app.py"), "--port", "5021"]
         ),
+        # 新增社交服务（个人主页/关注/私信）
+        ServiceConfig(
+            name="social",
+            display_name="社交服务",
+            file_path=_get_service_path.__func__("Social", "app.py"),
+            port=5022,
+            startup_command=[sys.executable, _get_service_path.__func__("Social", "app.py"), "--port", "5022"]
+        ),
     ]
 
     def __init__(self, log_level: str = "INFO", sequential: bool = False):
